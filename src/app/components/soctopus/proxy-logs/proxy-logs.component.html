@@ -1,0 +1,103 @@
+<h3>Proxy Logs</h3>
+<div class="sectionContainer">
+  <div class="listContainer eventsList">
+    <div class="spinner-padding" *ngIf="ntidsLoading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    <div class="header-container">
+      <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+        *ngIf="userSearchTerm && userSearchTerm !== '' && startDate && endDate && !ntidsLoading">
+        <app-copy-button [query]="ntidQuery"></app-copy-button>
+      </div>
+      <table mat-table [dataSource]="topNTIDs" *ngIf="!ntidsLoading" class="mat-elevation-z8">
+        <ng-container matColumnDef="NTID">
+          <th mat-header-cell *matHeaderCellDef> Top {{ntidLimit}} NTIDs </th>
+          <td mat-cell *matCellDef="let event" (click)="ntidClick(0, event)">
+            <span class="p-0p cursor-pointer underline">{{event.NTID}}</span>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="count">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let event" (click)="ntidClick(1, event)">
+            <span class="p-0p cursor-pointer underline">{{event.count}}</span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="NTIDColumns"></tr>
+        <tr mat-row class="eventRow" *matRowDef="let myRowData; columns: NTIDColumns"></tr>
+      </table>
+    </div>
+  </div>
+  <div class="listContainer eventsList">
+    <div class="spinner-padding" *ngIf="sourceIPsLoading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div class="header-container">
+      <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+        *ngIf="userSearchTerm && userSearchTerm !== '' && startDate && endDate && !sourceIPsLoading">
+        <app-copy-button [query]="sourceIPQuery"></app-copy-button>
+      </div>
+
+      <table mat-table [dataSource]="topSourceIPs" *ngIf="!sourceIPsLoading" class="mat-elevation-z8">
+        <ng-container matColumnDef="IP">
+          <span *ngIf="tabType === SoctopusTabType.Domain">
+            <th mat-header-cell *matHeaderCellDef> Top {{ntidLimit}} Source IPs</th>
+          </span>
+          <span *ngIf="tabType === SoctopusTabType.IP">
+            <th mat-header-cell *matHeaderCellDef> Top {{ntidLimit}} domains for Source IP</th>
+          </span>
+          <td mat-cell *matCellDef="let event" (click)="sourceIPClick(0, event)">
+            <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.Domain">{{event.IP}}</span>
+            <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.IP ">
+              {{ event['Domain Name'] }}
+            </span>
+          </td>
+        </ng-container>
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let event" (click)="sourceIPClick(1, event)">
+              <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.Domain">{{ event.count }}</span>
+              <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.IP">{{ event.count }}</span>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="IPColumns"></tr>
+          <tr mat-row class="eventRow" *matRowDef="let myRowData; columns: IPColumns"></tr>
+      </table>
+    </div>
+  </div>
+  <div class="listContainer eventsList">
+    <div class="spinner-padding" *ngIf="destIPsLoading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    <div class="header-container">
+      <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+        *ngIf="userSearchTerm && userSearchTerm !== '' && startDate && endDate && !destIPsLoading">
+        <app-copy-button [query]="destinationIPQuery"></app-copy-button>
+      </div>
+
+      <table mat-table [dataSource]="topDestinationIPs" *ngIf="!destIPsLoading" class="mat-elevation-z8">
+        <ng-container matColumnDef="IP">
+          <span *ngIf="tabType === SoctopusTabType.Domain">
+            <th mat-header-cell *matHeaderCellDef>Top {{this.sourceIPLimit}} Destination IPs</th>
+          </span>
+          <span *ngIf="tabType === SoctopusTabType.IP">
+            <th mat-header-cell *matHeaderCellDef>Top {{this.sourceIPLimit}} domains for Destination IP</th>
+          </span>
+          <td mat-cell *matCellDef="let event" (click)="destinationIPClick(0, event)">
+            <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.Domain">{{ event.IP}}</span>
+            <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.IP">{{ event['Domain Name']}}</span>
+          </td>
+        </ng-container>
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let event" (click)="destinationIPClick(1, event)">
+            <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.Domain">{{ event.count }}</span>
+            <span class="p-0p cursor-pointer underline" *ngIf="tabType === SoctopusTabType.IP">{{ event.count_}}</span>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="IPColumns"></tr>
+          <tr mat-row class="eventRow" *matRowDef="let myRowData; columns: IPColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

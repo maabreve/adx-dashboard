@@ -1,0 +1,78 @@
+<div class="content">
+    <h1>Security Risk Dashboard</h1>
+    <p>
+        The Risk Dashboard application is a management dashboard providing insights into all areas of Cyber Risk within BP, highlighting areas where some action needs to be taken. 
+    </p>
+<p>    It provides CIOs with a consolidate picture of cyber security risk and related informationm, so that they are informed of their current cyber risk exposure to take corrective actions and prioritize resources accordingly.
+</p>
+
+<p>
+    <a href="https://app.powerbi.com/Redirect?action=OpenApp&appId=f8940478-ba67-4de5-9a3c-fd4c58e7354f&ctid=ea80952e-a476-42d4-aaf4-5457852b0f7e" target="riskdashboard">
+        <img src="../../../../../assets/riskdashboard/riskdashboard.png"  alt="Open Power BI App" width="220px">
+    </a>
+    <br>
+    (click on the image to open in a new tab)
+    
+</p>
+<br>
+<h2>Data Sources</h2>
+<p>
+    Risk Dashboard relies on a variety of feeds processed from the SDS Data Lake:
+</p>
+<ul>
+    <li>SNOW Software Instance</li>
+    <li>Tooling Compliance (<a href="../fss-compliance">+ details</a>)</li>
+    <li>IT4IT</li>
+    <li>Palantir Barometer/li>
+        <li>Resilient Incidents</li>
+        <li>RiskRecon Suppliers</li>
+        <li>Saviynt</li>
+        <li>Unity</li>
+    </ul>
+
+<br>
+<h2>Data Refresh</h2>
+<p>Risk Dashboard is refreshed daily 04:30 AM UTC.</p>
+
+<br>
+<h2>Access</h2>
+<p>Access to the model and report are managed by the following groups:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Group</th>
+            <th>Owner</th>
+            <th>Model Permission</th>
+            <th>Power BI Permission</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>G DS CyberRiskDashboardAdmins
+            <td>James Vincent-Brown</td>
+            <td>Admin</td>
+            <td>Admin access to the Power BI workspace, to add, change or remove reports and to update Power BI App.</td>
+        </tr>
+        <tr>
+            <td>G DS CyberRiskDashboardSuperUsers
+            </td>
+            <td>James Vincent-Brown</td>
+            <td>Read access to all model tables without row level security</td>
+            <td>Read access to the Power BI App, with no access to the underlying dataset and no permission to re-share.</td>
+        </tr>
+        <tr>
+            <td>G DS CyberRiskDashboardUsers
+                
+            </td>
+            <td>James Vincent-Brown</td>
+            <td>Read access on tables with data of the user's segment (main and alternative)</td>
+            <td>Read access to the Power BI App, with no access to the underlying dataset and no permission to re-share.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+</div>

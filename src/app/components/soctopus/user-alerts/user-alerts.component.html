@@ -1,0 +1,140 @@
+<div class="sectionContainer">
+  <div class=alertContainer>
+      <div class="header-container">
+        <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+          *ngIf="searchTerm && searchTerm !== '' && startDate && endDate && !ATDsLoading && !FalconLoading">
+          <app-copy-button [query]="getfalconATDQuery()"></app-copy-button>
+        </div>
+        <h3>Advanced Threat Detections</h3>
+      </div>
+    <div class="row">
+      <!-- Crowdstrike Falcon  -->
+      <div class="spinner-padding" *ngIf="FalconLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+      <div class="paddingDiv"  *ngIf="!FalconLoading">
+        <table mat-table [dataSource]="getDetectionInstances(AlertType.Advanced_Threat_Detection, DefenderFeed.Crowdstrike_Falcon)" class="mat-elevation-z8">
+          <!-- EventDescription Column -->
+          <ng-container matColumnDef="CategoryName">
+            <th mat-header-cell *matHeaderCellDef> Crowdstrike Falcon </th>
+            <td mat-cell *matCellDef="let event"> {{event.CategoryName}} </td>
+          </ng-container>
+          <!-- Code Column -->
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>{{getAlertCount(AlertType.Advanced_Threat_Detection, DefenderFeed.Crowdstrike_Falcon)}}</th>
+            <td mat-cell *matCellDef="let event">{{event.count}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="threatColumns"></tr>
+          <tr mat-row class="alertRow" *matRowDef="let myRowData; columns: threatColumns" (click)="redirectToAdxSearch(AlertType.Advanced_Threat_Detection, DefenderFeed.Crowdstrike_Falcon, myRowData)"></tr>
+        </table>
+      </div>
+
+      <!-- Defender ATP -->
+      <div class="spinner-padding" *ngIf="ATDsLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+      <div class="paddingDiv" *ngIf="!ATDsLoading">
+        <table mat-table [dataSource]="getDetectionInstances(AlertType.Advanced_Threat_Detection, DefenderFeed.Windows_Defender)" class="mat-elevation-z8">
+          <!-- EventDescription Column -->
+          <ng-container matColumnDef="CategoryName">
+            <th mat-header-cell *matHeaderCellDef> Windows Defender ATP </th>
+            <td mat-cell *matCellDef="let event"> {{event.CategoryName}} </td>
+          </ng-container>
+          <!-- Code Column -->
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>{{getAlertCount(AlertType.Advanced_Threat_Detection, DefenderFeed.Windows_Defender)}}</th>
+            <td mat-cell *matCellDef="let event">{{event.count}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="threatColumns"></tr>
+          <tr mat-row class="alertRow" *matRowDef="let myRowData; columns: threatColumns" (click)="redirectToAdxSearch(AlertType.Advanced_Threat_Detection, DefenderFeed.Windows_Defender, myRowData)"></tr>
+        </table>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="spinner-padding" *ngIf="ATDsLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+      <div class="paddingDiv"*ngIf="!ATDsLoading">
+        <table mat-table [dataSource]="getDetectionInstances(AlertType.Advanced_Threat_Detection, DefenderFeed.Fireeye)" class="mat-elevation-z8">
+          <ng-container matColumnDef="CategoryName">
+            <th mat-header-cell *matHeaderCellDef> Fireeye </th>
+            <td mat-cell *matCellDef="let event"> {{event.CategoryName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>{{getAlertCount(AlertType.Advanced_Threat_Detection, DefenderFeed.Fireeye)}}</th>
+            <td mat-cell *matCellDef="let event">{{event.count}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="threatColumns"></tr>
+          <tr mat-row class="alertRow" *matRowDef="let myRowData; columns: threatColumns" (click)="redirectToAdxSearch(AlertType.Advanced_Threat_Detection, DefenderFeed.Fireeye, myRowData)"></tr>
+        </table>
+      </div>
+
+      <div class="spinner-padding" *ngIf="AVDsLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+      <div class="paddingDiv"  *ngIf="!AVDsLoading">
+        <table mat-table [dataSource]="getDetectionInstances(AlertType.Advanced_Threat_Detection, DefenderFeed.Sourcefire)" class="mat-elevation-z8">
+          <ng-container matColumnDef="CategoryName">
+            <th mat-header-cell *matHeaderCellDef> Sourcefire </th>
+            <td mat-cell *matCellDef="let event"> {{event.CategoryName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>{{getAlertCount(AlertType.Advanced_Threat_Detection, DefenderFeed.Sourcefire)}}</th>
+            <td mat-cell *matCellDef="let event">{{event.count}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="threatColumns"></tr>
+          <tr mat-row class="alertRow" *matRowDef="let myRowData; columns: threatColumns" (click)="redirectToAdxSearch(AlertType.Advanced_Threat_Detection, DefenderFeed.Sourcefire, myRowData)"></tr>
+        </table>
+      </div>
+    </div> -->
+  </div>
+  <div class=alertContainer>
+    <div class="header-container">
+      <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+        *ngIf="searchTerm && searchTerm !== '' && startDate && endDate && !AVDsLoading">
+        <app-copy-button [query]="AVDQuery"></app-copy-button>
+      </div>
+      <h3>{{countAlerts(AlertType.Antivirus_Detection)}} Antivirus Detections</h3>
+    </div>
+    <div class="row" >
+      <div class="spinner-padding" *ngIf="AVDsLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+      <div class="paddingDiv" *ngIf="!AVDsLoading">
+        <table mat-table [dataSource]="getDetectionInstances(AlertType.Antivirus_Detection, DefenderFeed.Windows_Defender)" class="mat-elevation-z8">
+          <!-- EventDescription Column -->
+          <ng-container matColumnDef="CategoryName">
+            <th mat-header-cell *matHeaderCellDef> Windows Defender AV</th>
+            <td mat-cell *matCellDef="let event"> {{event.CategoryName}} </td>
+          </ng-container>
+          <!-- Code Column -->
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>{{getAlertCount(AlertType.Antivirus_Detection, DefenderFeed.Windows_Defender)}}</th>
+            <td mat-cell *matCellDef="let event">{{event.count}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="threatColumns"></tr>
+          <tr mat-row class="alertRow" *matRowDef="let myRowData; columns: threatColumns" (click)="redirectToAdxSearch(AlertType.Antivirus_Detection, DefenderFeed.Windows_Defender, myRowData)"></tr>
+        </table>
+      </div>
+      <div class="spinner-padding" *ngIf="AVDsLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+      <div class="paddingDiv" *ngIf="!AVDsLoading">
+        <table mat-table [dataSource]="getDetectionInstances(AlertType.Antivirus_Detection, DefenderFeed.McAfee)" class="mat-elevation-z8">
+          <!-- EventDescription Column -->
+          <ng-container matColumnDef="CategoryName">
+            <th mat-header-cell *matHeaderCellDef> McAfee ePO</th>
+            <td mat-cell *matCellDef="let event"> {{event.CategoryName}} </td>
+          </ng-container>
+          <!-- Code Column -->
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>{{getAlertCount(AlertType.Antivirus_Detection, DefenderFeed.McAfee)}}</th>
+            <td mat-cell *matCellDef="let event">{{event.count}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="threatColumns"></tr>
+          <tr mat-row class="alertRow" *matRowDef="let myRowData; columns: threatColumns" (click)="redirectToAdxSearch(AlertType.Antivirus_Detection, DefenderFeed.McAfee, myRowData)"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

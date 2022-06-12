@@ -1,0 +1,21 @@
+<div id="filter-container" class="w-100p">
+  <div style="flex: 1; padding: 5px 0px">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input type="text"
+      pInputText
+      #searchBox
+      [(ngModel)]="searchTerm"
+      [placeholder]="placeholder"
+      (ngModelChange)="filterNtids()"
+      (keyup.enter)="onSearchTermChange(searchBox.value)"
+      [matAutocomplete]="auto"/>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)='onSearchTermChange($event.option.value)'>
+        <mat-option *ngFor="let ntid of filteredNtids" [value]="ntid">
+        {{ntid}}
+        </mat-option>
+      </mat-autocomplete>
+    </span>
+  </div>
+  <app-date-range-search [tabType]="tabType" class="date-range"></app-date-range-search>
+</div>

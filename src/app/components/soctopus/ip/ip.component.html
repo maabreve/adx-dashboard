@@ -1,0 +1,29 @@
+<div class="component-box">
+  <app-filter-bar placeholder="0.0.0.0 (Press Enter)" [tabType]="SoctopusTabType.IP"></app-filter-bar>
+</div>
+<div class="component-box">
+  <app-who-is></app-who-is>
+</div>
+<div class="component-box">
+  <mat-tab-group #matTabDomain mat-align-tabs="start" [selectedIndex]="0">
+    <mat-tab id="proxyTab" label="IDS">
+      <div class='row-flex pt-10p'>
+        <div class='column-flex'>
+          <app-sourcefire [tabType]="SoctopusTabType.IP"></app-sourcefire>
+        </div>
+        <div class='column-flex'>
+          <app-cyber-threat [tabType]="SoctopusTabType.IP"></app-cyber-threat>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab id="sourceFireDNSTab" label="DNS / Proxy">
+      <div class='row-flex pt-10p'>
+        <div class='column-flex'>
+          <app-proxy-logs [tabType]="SoctopusTabType.IP"></app-proxy-logs>
+        </div>
+        <div class='column-flex'>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

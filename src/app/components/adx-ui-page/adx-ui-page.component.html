@@ -1,0 +1,57 @@
+<div class="content">
+    <h1>ADX User Interface</h1>
+    <p>
+        Azure Data Explorer a.k.a. Kusto is a fast and highly scalable data exploration service used by SDS to store SDW
+        data.
+    </p>
+    <p>The easy way to access the SDS production cluster is by clicking on the image below.</p>
+    <p>
+        <a href="https://dataexplorer.azure.com/clusters/private-sdsadxprod.northeurope/databases/sds-prod"
+            target="adxui">
+            <img src="../../../../../assets/adxui/adxui.png" alt="Open ADX UI Production" width="220px">
+        </a>
+        <br>
+        (click on the image to open in a new tab)
+    </p>
+
+    <p>You can also use the web experience available in the Azure portal and as a stand-alone web application, please refer to <a href="https://docs.microsoft.com/en-us/azure/data-explorer/web-query-data" target="adxuidoc">Microsoft’s quickstart documentation</a>.
+    </p>
+
+
+    <br>
+    <h2>Access</h2>
+    <p>Access to the ADX cluster data is managed by the following groups:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Owner</th>
+                <th>Permission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    G AAD ITANDS DS SDS ADX AAD Users
+                </td>
+                <td>ronnie.dry@bp.com</td>
+                <td>Access on Active Directory tables</td>
+            </tr>
+            <tr>
+                <td>
+                    G AAD ITANDS DS SDS ADX PCN Users
+                </td>
+                <td>ronnie.dry@bp.com</td>
+                <td>Access on PCN tables</td>
+            </tr>
+            <tr>
+                <td>
+                    G AAD ITANDS DS SDS ADX Unrestricted
+                </td>
+                <td>ronnie.dry@bp.com</td>
+                <td>Access on all tables</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,26 @@
+<mat-toolbar class="toolbar">
+  <div>
+    <div id="BP_logo">
+      <mat-icon class="logo-svg" svgIcon="bp_logo"></mat-icon>
+    </div>
+    <div id="poweredBySDSContainer">
+      <a [routerLink]="['/']" (click)="goHome()">{{ title }}</a>
+      <span id="poweredBySDS"><p id="poweredBy">powered by</p><p id="SDS_Subtitle">Security Data Services</p></span>
+    </div>
+  </div>
+
+  <div class="toolbar-spacer"></div>
+
+  
+  <!-- <mat-icon>bedtime</mat-icon>
+  <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+  </mat-slide-toggle>
+  <mat-icon class="mr-8">brightness_5</mat-icon> -->
+
+  <!-- <a mat-button [routerLink]="['/']" (click)="goHome()">Home Page</a>
+  <a mat-button [routerLink]="['adx-search']" (click)="goAdxSearch()">ADX Search</a>
+
+  <button mat-raised-button *ngIf="!loggedIn" color="warn" (click)="login()">Login</button>
+  <button mat-raised-button *ngIf="loggedIn" color="warn" (click)="logout()">Logout</button> -->
+
+</mat-toolbar>

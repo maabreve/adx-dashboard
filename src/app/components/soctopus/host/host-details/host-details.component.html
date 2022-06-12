@@ -1,0 +1,73 @@
+<div>
+  <div id="user-info-title">
+    <h3>Host Details</h3>
+    <div class="header-container">
+      <app-copy-button [query]="query" *ngIf="query !== ''"></app-copy-button>
+    </div>
+  </div>
+  <div *ngIf="isLoading">
+    <mat-spinner diameter="50" class="center spinner"></mat-spinner>
+  </div>
+  <div class="user-info-container" *ngIf="!isLoading">
+    <div class="row-flex">
+      <div class="column-flex user-info-section">
+        <span>
+          <label>Host:</label>&nbsp;
+          <p>{{host}}</p>
+        </span>
+        <span>
+          <label>Domain:</label>&nbsp;
+          <p>{{domain}}</p>
+        </span>
+        <span>
+          <label>Type:</label>&nbsp;
+          <p>{{type}}</p>
+        </span>
+      </div>
+      <div class="column-flex user-info-section">
+        <span>
+          <label>Operating System:</label>&nbsp;
+          <p>{{operatingSystem}}</p>
+        </span>
+        <span>
+          <label>Service Pack:</label>&nbsp;
+          <p>{{servicePack}}</p>
+        </span>
+        <span>
+          <label>Build:</label>&nbsp;
+          <p>{{build}}</p>
+        </span>
+      </div>
+      <div class="column-flex user-info-section">
+        <span>
+          <label>Local IP:</label>&nbsp;
+          <p>{{localIP}}</p>
+        </span>
+        <span>
+          <label>Status:</label>&nbsp;
+          <p>{{status}}</p>
+        </span>
+        <span>
+          <label>Last Login:</label>&nbsp;
+          <p>{{lastLogin}}</p>
+        </span>
+      </div>
+      <div class="column-flex user-info-section">
+        <span>
+          <label>NTIDs</label>
+        </span>
+        <span>
+          <label>Last:</label>&nbsp;
+          <p class="cursor-pointer underline" (click)="openNtid(ntidLast)">{{ntidLast}}</p>
+        </span>
+        <span>
+          <label>Previous:</label>&nbsp;
+          <p class="cursor-pointer underline" (click)="openNtid(ntidPrevious)">{{ntidPrevious}}</p>
+        </span>
+      </div>
+      <div>
+        <button pButton id="cancel-query" type="button" label="Copy Raw" [cdkCopyToClipboard]="copy()"></button>
+      </div>
+    </div>
+  </div>
+</div>

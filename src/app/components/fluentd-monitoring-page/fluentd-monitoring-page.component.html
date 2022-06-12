@@ -1,0 +1,74 @@
+<div class="content">
+    <h1>FluentD Monitoring</h1>
+    <p>
+        FluentD Monitoring is a Power BI Workspace with reports and dashboards to monitor data processing from FluentD
+        into SDS ADLS (Azure Data Leke Services).
+    </p>
+    <p>It provides a consolidated point to see how data is landing and to identify ports and feeds that are not
+        receiving data as frequently as expected.
+    </p>
+
+    <p>
+        <a href="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapp.powerbi.com%2Fgroups%2Fme%2Fapps%2Ffc471880-7b74-4e2a-be4c-6bd887804ccd%2Fdashboards%2Fd8491650-b4bc-454e-9e54-10de43f53396%3FnoSignUpCheck%3D1&data=04%7C01%7Cdiego.moreira%40bp.com%7C72f94777b7d94bef85d208d89ce11651%7Cea80952ea47642d4aaf45457852b0f7e%7C0%7C0%7C637431837886658408%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=f9Ayrn9Oao8utZBabMx1PU7o42VClto5sRAn%2FNNpkt0%3D&reserved=0"
+            target="fluentd">
+            <img src="../../../../../assets/fluentdmonitoring/fluentdmonitoring.png" alt="Open Power BI App"
+                width="220px">
+        </a>
+        <br>
+        (click on the image to open in a new tab)
+
+    </p>
+    <br>
+    <h2>Data Sources</h2>
+    <p>
+        FluentD Monitoring relies on debug and info logs received from the parser that sends data to SDS ADLS and also
+        from a Databricks job that frequently scans the SDS datalake to detect the latest files received for each feed.
+    </p>
+    <p>
+        If a port number is not receiving data for 2 or more hours, an alert will be sent to the channel "DA1 CTU
+        Analytics Integration and Automation" / "Power Bi Notifications" and to distribution emails G ITANDS DS SDS Ops
+        Support (gitsdssdsopssupport@bp.com) and G IT&S DS Security Data Services (gitsdssecuritydataservices@bp.com).
+    </p>
+    <br>
+    <h2>Data Refresh</h2>
+    <p>FluentD Model is refreshed every hour.</p>
+
+    <br>
+    <h2>Access</h2>
+    <p>Access to the model and report are managed by the following groups:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Owner</th>
+                <th>Model Permission</th>
+                <th>Power BI Permission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    gitsdssdsopssupport@bp.com<br>
+                    itsdssecuritydataservices@bp.com<br>
+                    gitsdsarcsightopssupport@bp.com<br>
+                    GITSDSCTUDefenseSystems@bp.com<br>
+                    SOC@bp.com<br>
+                    gdspushbuttonmetricsuser@bp.com
+                </td>
+                <td>- - -</td>
+                <td>Read</td>
+                <td>Read access to the Power BI App "FluentD Monitoring".</td>
+            </tr>
+            <tr>
+                <td>gdsknowledgecentreadm@bp.com </td>
+                <td>- - -</td>
+                <td>Admin</td>
+                <td>Read access to the Power BI App "FluentD Monitoring".
+                    <br>Contribute access to the Power BI workspace, to add, change or remove reports and to update the
+                    app with selected reports.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

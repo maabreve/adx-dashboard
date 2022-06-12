@@ -1,0 +1,55 @@
+<div class="table-header">
+  <div class="flex-column-0">
+  </div>
+  <div class="flex-column-1 table-title">
+    <h3>Match Results</h3>
+  </div>
+  <div class="flex-column-0">
+    <p-button label="Export" styleClass="p-button-sm" (click)="exportExcel()"></p-button>
+  </div>
+</div>
+<div id="table-content">
+  <p-table
+    #dt
+    styleClass="p-datatable-gridlines"
+    [value]="rows"
+    [columns]="columns"
+    selectionMode="single"
+    dataKey="ID"
+    [resizableColumns]="true"
+    columnResizeMode="expand"
+    [paginator]="true"
+    [rows]="25"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    sortMode="multiple"
+    [scrollable]="true"
+    scrollHeight="350px"
+    [ngClass]="{'p-data-table-short': true}"
+    [rowsPerPageOptions]="[25,50,100,150]"
+    [multiSortMeta]="[{field: 'Time', order: -1}]">
+
+    <ng-template pTemplate="colgroup">
+      <colgroup>
+        <col *ngFor="let col of columns">
+      </colgroup>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pResizableColumn *ngFor="let col of columns" [pSortableColumn]="col.field">
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td *ngFor="let col of columns">
+          {{item[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,13 @@
+<app-filter-bar placeholder="NTID or UPN (Press Enter)" [storedNTIDs]="storedNtids" [tabType]="SoctopusTabType.NTID"></app-filter-bar>
+<app-ntid-user-details [NTID_Info_Loading]="NTID_Info_Loading" [userRecord]="userRecord" [query]="getUserDetailsQuery"></app-ntid-user-details>
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab [label]="countAlerts()">
+    <app-user-alerts [tabType]="SoctopusTabType.NTID" [userRecord]="userRecord">
+    </app-user-alerts>
+  </mat-tab>
+  <mat-tab label="AD Events, Hosts, & IPs">
+    <app-ntid-events-hosts-ips
+      [tabType]="SoctopusTabType.NTID">
+    </app-ntid-events-hosts-ips>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/d9777a42-701e-43b2-999a-2872308259d0/resourceGroups/ZNE-SSDS-N-16-COM-RSG/providers/Microsoft.Web/sites/adxsearch",
+  "appService.deploySubpath": "dist/angular10-browser-sample"
+}

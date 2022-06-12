@@ -1,0 +1,96 @@
+<div class="container">
+  <div id="user-info-title">
+    <h3 [ngStyle]="{'padding-left': (userRecord!=null) ? '3.5em' : '0'}">{{ntidPageTitle}}</h3>
+    <a [cdkCopyToClipboard]="getFormattedNTID()" *ngIf="userRecord">Copy</a>
+    <div class="header-container">
+      <app-copy-button [query]="query" *ngIf="userRecord && !NTID_Info_Loading"></app-copy-button>
+    </div>
+  </div>
+  <div class="spinner-padding" *ngIf="NTID_Info_Loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <div *ngIf="userRecord && !NTID_Info_Loading" id="user-info-container">
+    <div id="image-container">
+      <div class="img" *ngIf="userRecord.ProfileImageUrl!=undefined" [ngStyle]="{'background-image':'url('+userRecord.ProfileImageUrl+')'}"></div>
+    </div>
+    <div class="info-section">
+      <span>
+        <label>Password Last Changed:</label>
+        <p>{{userRecord["Password Last Changed"]}}</p>
+      </span>
+      <span>
+        <label>Account Disabled:</label>
+        <p>{{userRecord.AccountDisabled ? "Yes" : "No"}}</p>
+      </span>
+      <span>
+        <label>NTID:</label>
+        <p>{{userRecord.NTID}}</p>
+      </span>
+      <span>
+        <label>Most Recent Host:</label>
+        <p>{{userRecord.MostRecentHost}}</p>
+      </span>
+      <span>
+        <label>Most Recent IP:</label>
+        <p>{{userRecord.MostRecentIP}}</p>
+      </span>
+    </div>
+    <div class="info-section">
+      <span id="address-span">
+        <label>Address:</label>
+        <p>{{userRecord.Address}}</p>
+        <p>{{userRecord.Office.split(" - ")[1]}}</p>
+        <p>{{userRecord.CITY}}, {{userRecord.STATE}} {{userRecord.PostalCode}} {{userRecord.COUNTRY_CODE}}</p>
+      </span>
+      <span>
+        <label>Email:</label>
+        <a href="mailto:{{userRecord.Email}}">{{userRecord.Email}}</a>
+      </span>
+      <span>
+        <label>Phone:</label>
+        <a href="tel:{{userRecord.Phone}}">{{userRecord.Phone}}</a>
+      </span>
+    </div>
+    <div class="info-section">
+      <span>
+        <label>Job Title:</label>
+        <p>{{userRecord["Job Title"]}}</p>
+      </span>
+      <span>
+        <label>Company:</label>
+        <p>{{userRecord.Company}}</p>
+      </span>
+      <span>
+        <label>Region Code:</label>
+        <p>{{userRecord["Region Code"]}}</p>
+      </span>
+      <span>
+        <label>Site Code:</label>
+        <p>{{userRecord.Site}}</p>
+      </span>
+    </div>
+    <div class="info-section">
+      <span>
+        <label>Entity:</label>
+        <p>{{userRecord.Segment}}</p>
+      </span>
+      <span>
+        <label>Sub-Entity:</label>
+        <p>{{userRecord.Function}}</p>
+      </span>
+      <span>
+        <label>Enterprise:</label>
+        <p>{{userRecord.Department}}</p>
+      </span>
+      <span>
+        <label>Manager:</label>
+        <p>{{userRecord.Manager}}</p>
+      </span>
+      <span>
+        <label>Manager NTID:</label>
+        <p>{{userRecord["Manager NTID"]}}</p>
+      </span>
+    </div>
+  </div>
+  <p class="placeholder-prompt" *ngIf="!userRecord && !NTID_Info_Loading">Enter a user's identifier above</p>
+</div>

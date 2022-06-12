@@ -1,0 +1,70 @@
+<div>
+  <div *ngIf="isLoading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <div id="user-info-title">
+    <h3>Whois Data</h3>
+  </div>
+  <div class="user-info-container" *ngIf="!isLoading">
+    <div class="row-flex">
+      <div class="column-flex user-info-section">
+        <span>
+          <label>Country:</label>&nbsp;
+          <p>{{country}}</p>
+        </span>
+        <span>
+          <label>Region:</label>&nbsp;
+          <p>{{region}}</p>
+        </span>
+        <span>
+          <label>City:</label>&nbsp;
+          <p>{{city}}</p>
+        </span>
+        <span>
+          <label>Postal Code:</label>&nbsp;
+          <p>{{postal}}</p>
+        </span>
+      </div>
+      <div class="column-flex user-info-section">
+        <span>
+          <label>Company:</label>&nbsp;
+          <p>{{company}}</p>
+        </span>
+        <span>
+          <label>Host ID:</label>&nbsp;
+          <p>{{hostId}}</p>
+        </span>
+        <span>
+          <label>Host Name:</label>&nbsp;
+          <p>{{hostName}}</p>
+        </span>
+        <span>
+          <label>Host Network:</label>&nbsp;
+          <p>{{hostNetwork}}</p>
+        </span>
+      </div>
+      <div class="column-flex user-info-section">
+        <span>
+          <label>IP:</label>&nbsp;
+          <p>{{ip}}</p>
+        </span>
+        <span>
+          <label>Latitude:</label>&nbsp;
+          <p>{{latitude}}</p>
+        </span>
+        <span>
+          <label>Longitude:</label>&nbsp;
+          <p>{{longitude}}</p>
+        </span>
+        <span>
+          <label>Timezone:</label>&nbsp;
+          <p>{{timezone}}</p>
+        </span>
+      </div>
+      <div>
+        <button pButton id="cancel-query" type="button" label="Copy Raw" [cdkCopyToClipboard]="copy()" [disabled]="searchTerm === null"></button>
+        <button pButton id="cancel-query" type="button" label="Maps" (click)="goToGoogleMaps()" [disabled]="searchTerm === null"></button>
+      </div>
+    </div>
+  </div>
+</div>

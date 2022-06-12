@@ -1,0 +1,28 @@
+.help-content {
+    padding: 2em !important
+}
+ 
+.warning {        
+    display: flex;
+    align-items: center;
+}
+ 
+a {
+    color: gray;
+}
+
+a:hover {
+    cursor: pointer !important;
+}
+  
+.material-icons.orange { color: #b4701d; }
+.material-icons.red { color: #b42222; }  
+
+img {
+    padding: 2em;
+}
+
+.fullpage {
+    width: 90%;
+    height: auto;
+}

@@ -1,0 +1,26 @@
+ul {
+  list-style-type: none;
+}
+
+#sub-list {
+  margin: 5px 20px 20px 0px;
+  padding-left: 15px;
+}
+
+#tag-list {
+  margin-right: 31px;
+}
+
+:host ::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  line-height: normal !important;
+}
+
+#data-source-span {
+  position: relative;
+  left: -5px
+}
+
+.exactSearchIcon {
+  height: 20px;
+  font-size: 15px;
+}

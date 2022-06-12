@@ -1,0 +1,82 @@
+<mat-nav-list id="menuContents" style="overflow-x: none !important;">
+  <p id="topButtons" mat-list-item *ngIf="sideMenuOpen">
+    <a matTooltip="Home" [routerLink]="['']">
+      <mat-icon mat-list-icon aria-hidden="false" class="iconButton" aria-label="home">home</mat-icon>
+    </a>
+    <a matTooltip="Collapse menu" (click)="toggleSideMenu()">
+      <mat-icon mat-list-icon aria-hidden="false" class="iconButton float-right circleButton" aria-label="Collapse">arrow_left</mat-icon>
+    </a>
+  </p>
+  <a mat-list-item *ngIf="!sideMenuOpen" (click)="toggleSideMenu()" matTooltip="Expand menu">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Show" class="circleButton">arrow_right</mat-icon>
+  </a>
+  <a mat-list-item *ngIf="!sideMenuOpen" [routerLink]="['']" matTooltip="Home">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="home">home</mat-icon>
+  </a>
+  <p *ngIf="sideMenuOpen" class="menu-title">Security Data Search</p>
+  <a mat-list-item [routerLink]="['adx-search']" (click)="openADXSearch()" matTooltip="Open ADXsearch">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="ADXsearch">search</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">ADXsearch</h4>
+  </a>
+  <a mat-list-item [routerLink]="['adx-web-ui']"  matTooltip="Open ADX Web UI">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="ADX Web UI">cloud</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">ADX Web UI</h4>
+  </a>
+  <a mat-list-item [routerLink]="['kusto-info']" matTooltip="Open Kusto Explorer Info">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Kusto Explorer">library_books</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Kusto Explorer</h4>
+  </a>
+  <a mat-list-item *ngIf="soctopusAuthorised" [routerLink]="['soctopus']" (click)="closeSideMenu()"  matTooltip="Open SOCtopus">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="soctopus">trip_origin</mat-icon>
+    <h4 mat-line *ngIf="showLinkText">SOCtopus</h4>
+  </a>
+  <p *ngIf="sideMenuOpen" class="menu-title" >Security Data Analytics</p>
+  <a mat-list-item [routerLink]="['sds-data-bricks']" matTooltip="Open SDS Databricks">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="SDS Databricks">layers icon</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">SDS Databricks</h4>
+  </a>
+  <p *ngIf="sideMenuOpen" class="menu-title">Security Data Dashboards</p>
+  <a mat-list-item [routerLink]="['push-button-metrics']" matTooltip="Open Push Button Metrics">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Push Button Metrics">center_focus_strong</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Push Button Metrics</h4>
+  </a>
+  <a mat-list-item [routerLink]="['risk-dashboard']" matTooltip="Open Risk Dashboard">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Risk Dashboard">report_problem</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Risk Dashboard</h4>
+  </a>
+  <a mat-list-item [routerLink]="['i2p-dashboard']" matTooltip="Open I2P Dashboard">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="I2P Dashboard">location_searching</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">I2P Dashboard</h4>
+  </a>
+  <a mat-list-item [routerLink]="['incident-dashboard']" matTooltip="Open Incident Dashboard">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Incident Dashboard">filter_list</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Incident Dashboard</h4>
+  </a>
+  <a mat-list-item [routerLink]="['fss-compliance']" matTooltip="Open FSS Compliance">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="FSS Compliance">dvr</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">FSS Compliance</h4>
+  </a>
+  <a mat-list-item [routerLink]="['fluentd-monitoring']" matTooltip="Open FluentD Monitoring">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="FluentD Monitoring">perm_identity</mat-icon>
+    <h4 mat-line *ngIf="showLinkText">FluentD Monitoring</h4>
+  </a>
+  <p *ngIf="sideMenuOpen" class="menu-title">Data Marketplace</p>
+  <a mat-list-item href="https://lava.palantircloud.com/workspace/marketplace-app" add target="_blank" matTooltip="Open Data Marketplace">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Data Marketplace">business</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Data Marketplace</h4>
+  </a>
+</mat-nav-list>
+<mat-nav-list id="div-bottom">
+  <a mat-list-item [routerLink]="['help']" matTooltip="Help">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Help">help</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Help</h4>
+  </a>
+  <a mat-list-item *ngIf="loggedIn" (click)="logout()" matTooltip="Logout">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Log out">exit_to_app</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Logout</h4>
+  </a>
+  <a mat-list-item *ngIf="!loggedIn" (click)="login()" matTooltip="Login">
+    <mat-icon mat-list-icon aria-hidden="false" aria-label="Log in">open_in_new</mat-icon>
+    <h4 mat-line *ngIf="sideMenuOpen">Login</h4>
+  </a>
+</mat-nav-list>

@@ -1,0 +1,19 @@
+<div class="mb-30p">
+
+  <div class="mb-10p">
+    RESULT LIMIT
+  </div>
+  <mat-button-toggle-group
+    name="fontStyle"
+    aria-label=""
+    [value]="initialValue">
+    <mat-button-toggle value="100" class="btn-result-limit"
+      (click)="onClick(100)">100</mat-button-toggle>
+    <mat-button-toggle value="1k" class="btn-result-limit"
+      (click)="onClick(1000)">1k</mat-button-toggle>
+    <mat-button-toggle value="10k" class="btn-result-limit"
+      (click)="onClick(10000)">10k</mat-button-toggle>
+    <mat-button-toggle value="100k" class="btn-result-limit"
+      (click)="onClick(100000)">100k</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

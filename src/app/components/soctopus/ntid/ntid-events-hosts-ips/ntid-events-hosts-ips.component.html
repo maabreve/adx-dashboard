@@ -1,0 +1,111 @@
+<div class="sectionContainer">
+  <div class="listContainer eventsList">
+  <div class="spinner-padding" *ngIf="NTID_ADEvents_Loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <div class="header-container">
+    <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+      *ngIf="searchTerm && searchTerm !== '' && startDate && endDate && !NTID_ADEvents_Loading">
+      <app-copy-button [query]="topADEventQuery"></app-copy-button>
+    </div>
+    <table mat-table [dataSource]="ADEvents" *ngIf="!NTID_ADEvents_Loading" class="mat-elevation-z8">
+      <!-- Code Column -->
+      <ng-container matColumnDef="Code">
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td mat-cell *matCellDef="let event"> {{event.Code}} </td>
+      </ng-container>
+      <!-- EventDescription Column -->
+      <ng-container matColumnDef="EventDescription">
+        <th mat-header-cell *matHeaderCellDef> Top AD Events </th>
+        <td mat-cell *matCellDef="let event"> {{event.EventDescription}} </td>
+      </ng-container>
+      <!-- Code Column -->
+      <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef> Occurances </th>
+        <td mat-cell *matCellDef="let event"> {{event.count}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="ADColumns"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: ADColumns"></tr>
+    </table>
+  </div>
+  </div>
+  <div class="listContainer eventsList">
+  <div class="spinner-padding" *ngIf="NTID_IPs_Loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <div class="header-container">
+    <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+    *ngIf="searchTerm && searchTerm !== '' && startDate && endDate && !NTID_IPs_Loading">
+    <app-copy-button [query]="topIPsQuery"></app-copy-button>
+    </div>
+
+    <table mat-table [dataSource]="TopIPs" *ngIf="!NTID_IPs_Loading" class="mat-elevation-z8">
+    <!-- EventDescription Column -->
+    <ng-container matColumnDef="IPAddress">
+      <th mat-header-cell *matHeaderCellDef> Top {{TopIPs!=null?TopIPs.length+" ":""}}IPs </th>
+      <td mat-cell *matCellDef="let event" class="cursor-pointer underline" (click)="redirectToIPTab(event.IPAddress)"> {{event.IPAddress}} </td>
+    </ng-container>
+    <!-- Code Column -->
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Occurances </th>
+      <td mat-cell *matCellDef="let event" class="cursor-pointer underline" (click)="redirectIPToADXSearch(event.IPAddress)">{{event.count}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="TopIPsColumns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: TopIPsColumns"></tr>
+    </table>
+  </div>
+  </div>
+  <div class="listContainer eventsList">
+  <div class="spinner-padding" *ngIf="NTID_Hosts_Loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+    <div class="header-container">
+      <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+        *ngIf="searchTerm && searchTerm !== '' && startDate && endDate && !NTID_Hosts_Loading">
+        <app-copy-button [query]="topHostQuery"></app-copy-button>
+      </div>
+
+      <table mat-table [dataSource]="TopHosts" *ngIf="!NTID_Hosts_Loading" class="mat-elevation-z8">
+        <!-- EventDescription Column -->
+        <ng-container matColumnDef="HostName">
+          <th mat-header-cell *matHeaderCellDef>Top {{TopHosts!=null?TopHosts.length+" ":""}}Hosts</th>
+          <td mat-cell *matCellDef="let event" class="cursor-pointer underline" (click)="redirectToHostTab(event.HostName)"> {{event.HostName}} </td>
+        </ng-container>
+        <!-- Code Column -->
+        <ng-container matColumnDef="count">
+          <th mat-header-cell *matHeaderCellDef> Occurances </th>
+          <td mat-cell *matCellDef="let event" class="cursor-pointer underline" (click)="redirectHostToADXSearch(event.HostName)">{{event.count}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="TopHostColumns"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: TopHostColumns"></tr>
+      </table>
+    </div>
+  </div>
+  <div class="listContainer eventsList">
+  <div class="spinner-padding" *ngIf="NTID_HostIPPairs_Loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <div class="header-container">
+    <div class="header-button cursor-pointer" pTooltip="Copy Kusto Query"
+      *ngIf="searchTerm && searchTerm !== '' && startDate && endDate && !NTID_Hosts_Loading">
+      <app-copy-button [query]="topIPHostPairsQuery"></app-copy-button>
+    </div>
+
+    <table mat-table [dataSource]="TopHostIpGroupings" *ngIf="!NTID_HostIPPairs_Loading" class="mat-elevation-z8">
+      <!-- EventDescription Column -->
+      <ng-container matColumnDef="HostIP">
+      <th mat-header-cell *matHeaderCellDef>Top {{TopHostIpGroupings!=null?TopHostIpGroupings.length+" ":""}}Matching Host:IP Pairs</th>
+      <td mat-cell *matCellDef="let event">{{event.HostIP.split(":")[0]}} : {{event.HostIP.split(":")[1]}}</td>
+      </ng-container>
+      <!-- Code Column -->
+      <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Occurances </th>
+      <td mat-cell *matCellDef="let event" class="cursor-pointer underline" (click)="redirectHostIPToADXSearch(event.HostIP)">{{event.count}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="TopHostIPColumns"></tr>
+      <tr mat-row  *matRowDef="let myRowData; columns: TopHostIPColumns"></tr>
+    </table>
+  </div>
+  </div>
+</div>

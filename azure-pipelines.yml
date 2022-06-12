@@ -1,0 +1,143 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- release
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Install_npm
+  displayName: Install NPM
+  jobs:
+  - job: install_npm 
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '12.x'
+      displayName: 'Install Node.js'
+
+- stage: DEV_build 
+  condition: eq(variables['Build.SourceBranchName'], 'develop')
+  displayName: DEV Build
+  dependsOn: Install_npm
+  jobs:
+  - job: build_app
+    steps:
+    - checkout: self
+      clean: true
+      persistCredentials: true
+      path: repo
+
+    - script: git checkout develop
+      displayName: "Checkout to develop branch"
+      workingDirectory: $(Pipeline.Workspace)/repo/
+
+    - script: |
+        npm install -g @angular/cli
+        npm install
+        npm run build-dev
+      displayName: 'npm install and build'
+
+    - task: ArchiveFiles@2
+      displayName: Zip Angular dist folder
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/angular10-browser-sample'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+        replaceExistingArchive: true
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/app.zip'
+        artifactName: 'angular-app'
+        publishLocation: 'Container'
+      displayName: 'artifact'
+
+- stage: PROD_build 
+  condition: eq(variables['Build.SourceBranchName'], 'release')
+  displayName: PROD Build
+  dependsOn: Install_npm
+  jobs:
+  - job: build_app
+    steps:
+    - checkout: self
+      clean: true
+      persistCredentials: true
+      path: repo
+
+    - script: git checkout release
+      displayName: "Checkout to release branch"
+      workingDirectory: $(Pipeline.Workspace)/repo/
+
+    - script: |
+        npm install -g @angular/cli
+        npm install
+        npm run build-prod
+      displayName: 'npm install and build'
+
+    - task: ArchiveFiles@2
+      displayName: Zip Angular dist folder
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/angular10-browser-sample'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+        replaceExistingArchive: true
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/app.zip'
+        artifactName: 'angular-app'
+        publishLocation: 'Container'
+      displayName: 'artifact'      
+
+- stage: DEV_deploy
+  condition: eq(variables['Build.SourceBranchName'], 'develop')
+  displayName: DEV Deploy WebApp
+  dependsOn: DEV_build
+  jobs:
+  - deployment: Deployment
+    environment: adx_dev
+    displayName: Deployment
+    pool: BP-MAPS-ZNE-SSDS-N-16-COM-01
+    variables: 
+      VSTS_ARM_REST_IGNORE_SSL_ERRORS: true
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureRMWebAppDeployment@4
+            inputs:
+              azureSubscription: 'Spoke-zne-ssds-n-dssip1-sbc'
+              appType: 'webApp'
+              WebAppName: 'sdw'
+              DeploymentType: runFromZip
+              package: '$(Pipeline.Workspace)/*/*.zip'
+
+- stage: PROD_deploy
+  condition: eq(variables['Build.SourceBranchName'], 'release')
+  displayName: PROD Deploy WebApp
+  dependsOn: PROD_build
+  jobs:
+  - deployment: Deployment
+    environment: adx_dev
+    displayName: Deployment
+    pool: BP-MAPS-ZNE-SSDS-P-14-COM-01
+    variables: 
+      VSTS_ARM_REST_IGNORE_SSL_ERRORS: true
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureRMWebAppDeployment@4
+            inputs:
+              azureSubscription: 'Spoke-zne-ssds-p-dssip1-sbc'
+              appType: 'webApp'
+              WebAppName: 'swd'
+              DeploymentType: runFromZip
+              package: '$(Pipeline.Workspace)/*/*.zip'
+     

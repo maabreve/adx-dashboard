@@ -1,0 +1,70 @@
+<div class="content">
+    <h1>Compliance</h1>
+    <p>
+        Compliance is a Power BI Workspace with reports for tooling and patching compliance.
+    </p>
+    <p>It provides a consolidated overview and detailed list of hosts not compliant in terms of tools (Crowdstrike,
+        Defender, etc.) and patching.
+    </p>
+
+    <p>
+        <a href="https://app.powerbi.com/Redirect?action=OpenApp&appId=02b85f1a-de4f-4b60-9b5a-01f95c754a47&ctid=ea80952e-a476-42d4-aaf4-5457852b0f7e"
+            target="compliance">
+            <img src="../../../../../assets/compliance/compliance.png" alt="Open Power BI App" width="220px">
+        </a>
+        <br>
+        (click on the image to open in a new tab)
+
+    </p>
+    <br>
+    <h2>Data Sources</h2>
+    <p>
+        Compliance relies on a variety of feeds to collect details about BP hosts (client and server computers) and
+        patches available and applied to each host.
+    </p>
+    <p> <img src="../../../../../assets/compliance/compliance-feeds.png" alt="Compliance Feeds" width="660px">
+    </p>
+    <br>
+    <h2>Data Refresh</h2>
+    <p>Compliance model is refreshed daily 04:00 AM UTC.</p>
+
+    <br>
+    <h2>Access</h2>
+    <p>Access to the model and report are managed by the following groups:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Owner</th>
+                <th>Model Permission</th>
+                <th>Power BI Permission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>G AAD ITANDS DS SDS Compliance Power BI
+                    Workspace
+                </td>
+                <td>Ritesh Patel,<br>Kamran Rawn</td>
+                <td>Read on Compliance model for Tooling and Patching</td>
+                <td>Read access to the Power BI App "FSS ST Compliance"<br> Contribute access to the Power BI
+                    workspace, to add, change or remove reports and to update the app with selected reports.</td>
+            </tr>
+            <tr>
+                <td>G AAD ITANDS DS SDS Compliance Power BI APP
+                </td>
+                <td>Ritesh Patel,<br>Kamran Rawn</td>
+                <td>- - -</td>
+                <td>Read access to the Power BI App "FSS ST Compliance", with no access to the underlying dataset and no
+                    permission to re-share.</td>
+            </tr>
+            <tr>
+                <td>G AAD ITANDS DS SDS Compliance Model
+                </td>
+                <td>Ritesh Patel,<br>Kamran Rawn</td>
+                <td>Read on Compliance model for Tooling and Patching compliance</td>
+                <td>- - -</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

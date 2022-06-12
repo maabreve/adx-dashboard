@@ -1,0 +1,120 @@
+<div class="left-content">
+  <mat-icon
+  id="search-icon"
+  aria-hidden="false"
+  color=accent
+  (click)="toggleSideNav()"
+  class="cursor-pointer"
+  aria-label="">search</mat-icon>
+</div>
+<div id="right-content">
+  <mat-sidenav-container class="h-100" (backdropClick)="closeSideNav()">
+    <mat-sidenav #sidenav opened (keydown.escape)="closeSideNav()" [ngClass]="{'right-position': true}" disableClose>
+      <div id="drawer-content">
+        <div class="left" [ngClass]="{'position-fixed': !showDataSourceFilters}">
+          <div id="filter-terms">
+            <app-search-terms-filter></app-search-terms-filter>
+          </div>
+          <div id="filter-bottom">
+            <div>
+              <div class="div-horizontal-separator">
+              </div>
+
+              <app-date-range-filter [highlight]="dateRangeHighlight"></app-date-range-filter>
+
+              <div class="div-horizontal-separator">
+              </div>
+              <app-result-limit-filter></app-result-limit-filter>
+              <div class="mt-5p">
+                <button mat-raised-button class="btn-filter" (click)="resetFilter()">
+                  RESET
+                </button>
+                <span class="div-vertical-separator"></span>
+                <button mat-raised-button id="btn-search" class="btn-filter-2x" [disabled]="!canSearch" (click)="onSearch('button')" [ngClass]="{'disabled': !canSearch}">
+                  SEARCH
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right" [hidden]="showDataSourceFilters">
+          <app-data-source-filter></app-data-source-filter>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content">
+        <div *ngIf="isLoading">
+          <div class="center">
+            <mat-spinner color=primary></mat-spinner>
+            <button pButton
+                    id="cancel-query"
+                    type="button"
+                    label="Cancel Query"
+                    icon="pi pi-ban"
+                    class="p-button-danger"
+                    (click)="cancelQuery()"></button>
+          </div>
+        </div>
+
+        <div id="dash-container" *ngIf="showTable && !isLoading">
+          <div *ngFor="let adx of adxResult"> </div>
+            <mat-tab-group mat-align-tabs="start" (selectedTabChange)="onTabChange($event)">
+              <div *ngFor="let adx of adxResult">
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    <span>
+                      <span style="display:flex;">
+                        {{adx.Feed}} <span *ngIf="!adx.isLoading">&nbsp;({{adx.Rows.length}})</span>
+                          &nbsp;<mat-spinner color=primary diameter=15 *ngIf="adx.isLoading"></mat-spinner>
+                          &nbsp;<span id="close-tab" class="cursor-pointer align-right" (click)="closeTab($event, adx)">
+                            <i class="material-icons">highlight_off</i>
+                        </span>
+                      </span>
+                    </span>
+                  </ng-template>
+                  <div id="dash-left" [ngClass]="{'dash-left-full': !showHistogram}">
+                    <div id="dash-table-container" [ngClass]="{'dash-table-container-small': showHistogram}">
+                      <div id="dash-table" [ngClass]="{'dash-table-full': !hideTimeline(adx.FeedId)}">
+                        <app-proxy-data-table
+                          [feed]="adx.Feed"
+                          [proxyDataList]="adx.Rows"
+                          [displayedColumns]="adx.DataSourceItem"
+                          [commandQuery]="adx.CommandQuery"
+                          [scrollHeight]="scrollHeight">
+                        </app-proxy-data-table>
+                        <button id="toggle-chart" pButton type="button" icon="pi pi-chart-bar" *ngIf="adx.Rows.length > 0"
+                          class="p-button-sm">
+                        </button>
+                        <button id="toggle-timeline" pButton type="button" [icon]="iconToggleTimeline"
+                          class="p-button-sm p-button-success" [pTooltip]="tooltipTimeline" tooltipPosition="left"
+                          *ngIf="adx.Rows.length > 0" (click)="toggleTimeline(adx.FeedId)">
+                        </button>
+                        <button id="toggle-histogram" pButton type="button" [icon]="iconToggleHistogram"
+                          class="p-button-sm p-button-success" [pTooltip]="tooltipHistogram" *ngIf="adx.Rows.length > 0"
+                          (click)="toggleHistogram()">
+                        </button>
+                      </div>
+                      <div id="dash-timeline" [hidden]="hideTimeline(adx.FeedId)" [ngClass]="{'dash-timeline-small': showHistogram}">
+                        <app-stacked-column-chart [timeline]="getCurrentTimeline(adx.Feed)" [chartWidth]="timelineWidth">
+                        </app-stacked-column-chart>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="dash-right" [hidden]="!showHistogram">
+                    <div id="dash-histogram" *ngIf="currentHistogram !== undefined">
+                      <div *ngFor="let item of currentHistogram">
+                        <app-histogram-chart [title]="item.histogram.column" [data]="item.histogram.data" [categories]="item.histogram.categories">
+                        </app-histogram-chart>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </mat-tab>
+              </div>
+            </mat-tab-group>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

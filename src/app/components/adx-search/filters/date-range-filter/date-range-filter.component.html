@@ -1,0 +1,61 @@
+<div class="">
+  <div class="mb-10p">
+    DATE RANGE
+  </div>
+  <div class="mb-5p">
+    <input id="startDate"
+            type="datetime-local"
+            name="startDate"
+            class="date-input"
+            [ngModel]="startDate"
+            placeholder="Start Date"
+            (ngModelChange)="onChangeDateBegin($event)">
+  </div>
+
+  <div>
+    <input id="endDate"
+            type="datetime-local"
+            name="endDate"
+            class="date-input"
+            [ngModel]="endDate"
+            (ngModelChange)="onChangeDateEnd($event)">
+  </div>
+
+  <div class="mt-5p">
+    <button mat-raised-button
+            class="btn-filter"
+            (click)="calculateDate(1, 1, 'button')"
+            [ngClass]="{'btn-selected': btnSelected === 1 && highlight }" >
+      LAST DAY
+    </button>
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button
+            class="btn-filter"
+            [ngClass]="{'btn-selected': btnSelected === 2 && highlight }"
+            (click)="calculateDate(1, 7, 'button')">
+      LAST WEEK
+    </button>
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button
+            class="btn-filter"
+            [ngClass]="{'btn-selected': btnSelected === 3 && highlight }"
+            (click)="calculateDate(2, 1, 'button')">
+      LAST MONTH
+    </button>
+  </div>
+
+  <div class="mt-5p">
+    <button mat-raised-button class="btn-filter" [ngClass]="{'btn-selected': btnSelected === 4 && highlight }" (click)="calculateDate(2, 3, 'button')">
+      3 MONTHS
+    </button>
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button class="btn-filter" [ngClass]="{'btn-selected': btnSelected === 5 && highlight }" (click)="calculateDate(2, 6, 'button')">
+      6 MONTHS
+    </button>
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button class="btn-filter" [ngClass]="{'btn-selected': btnSelected === 6 && highlight }"  (click)="calculateDate(2, 12, 'button')">
+      12 MONTHS
+    </button>
+  </div>
+
+</div>

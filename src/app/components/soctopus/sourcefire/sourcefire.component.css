@@ -1,0 +1,71 @@
+.sectionContainer {
+  display: flex;
+  height: auto;
+}
+
+.listContainer {
+  flex: 1;
+  padding: 1em;
+}
+
+.listContainer a {
+  color: white !important;
+  cursor: pointer;
+}
+
+.list {
+  background: rgba(0,0,0,0.25);
+  border-radius: 0.5em;
+  height: 100%;
+}
+
+.list > h4 {
+  text-align: center;
+}
+
+.list > span{
+  display: flex;
+  padding: 0 1em;
+  border-bottom: grey;
+  border-bottom-width: 1px !important;
+}
+
+.list > span p {
+  margin-bottom: 0px;
+}
+
+.list > span > p{
+  flex: 1;
+}
+
+.list > span > p:last-child {
+  text-align: right;
+}
+
+.listContainer.eventsList {
+  flex: 2;
+}
+
+.listContainer.eventsList table {
+  width: 100%;
+}
+
+.listContainer tr td:last-child, .listContainer tr th:last-child, table.list tr td:last-child {
+  text-align:right;
+}
+
+table .eventRow:hover{
+  background: #424242 !important;
+}
+
+table .eventRow:hover td{
+  /* font-weight:bold !important; */
+}
+
+.mat-spinner, #mat-spinner {
+  margin: auto;
+}
+
+.spinner-padding {
+  margin-top: 3em;
+}

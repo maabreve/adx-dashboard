@@ -1,0 +1,92 @@
+<div class="content">
+    <h1>I2P</h1>
+    <p>
+        I2P is a Power BI Workspace with reports on incidents per person.
+    </p>
+    <p>
+        <a href="https://app.powerbi.com/Redirect?action=OpenApp&appId=48e321da-e418-4d7a-a5ae-586ea9f229c1&ctid=ea80952e-a476-42d4-aaf4-5457852b0f7e"
+            target="i2p">
+            <img src="../../../../../assets/i2p/i2p.png" alt="Open Power BI App" width="220px">
+        </a>
+        <br>
+        (click on the image to open in a new tab)
+
+    </p>
+    <br>
+    <h2>Data Sources</h2>
+    <p>
+        This project uses data from Resilient (list of incidents and types) and from Saviynt (list of users and their
+        location).
+        <br>
+    </p>
+    <h2>Data Refresh</h2>
+    <p>I2P reports are refreshed daily 05:00 AM UTC.</p>
+    
+
+    <h2>Model</h2>
+    <p>The model has the following tables:</p>
+    <ul>
+        <li><b>Incident</b>: List of incidents with key fields.</li>
+        <li><b>Incident Detail</b>: List of incidents with all fields.</li>
+        <li><b>Population</b>: Count of population by Entity, Region and Country.</li>
+        <li><b>Saviynt</b>: List of users used to calculate the population.</li>
+    </ul>
+
+
+    <h2>Metrics</h2>
+    <p>
+        The key measures of the Power BI model are:
+    </p>
+    
+    <ul>
+        <li>Incident Count: distinct count of incident IDs</li>
+        <li>Incident %: Percentage of the incidents of a region/country/entity compared to the total incidents</li>
+        <li>Population Total: total of active users under a region/country/entity</li>
+        <li>Population %: Percentage of the population of a region/country/entity compared to the total population</li>
+        <li>I2P: Incident % divided by Population %</li>
+    </ul>
+    
+
+    <h2>Reports</h2>
+
+    <p><b>I2P Analysis</b>: This is the main report with tabs for I2P, Attack Vector and Incident Details.</p>
+    <p><img src="../../../../../assets/i2p/i2p-analysis-report.png" alt="Report" width="660px"></p>
+
+    <p><b>I2P Late Incidents</b>: List of incidents that were created late.</p>
+    <p><img src="../../../../../assets/i2p/i2p-late-incidents-report.png" alt="Report" width="660px">
+    </p>
+
+    <p><b>Monitoring and Data Issues</b>: Monitoring of the process to load new data and maintenance of configuration
+        tables.</p>
+    <p><img src="../../../../../assets/i2p/i2p-monitoring-report.png" alt="Report" width="660px"></p>
+
+
+    <h2>Access</h2>
+    <p>Access to the model and report are managed by the following groups:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Owner</th>
+                <th>Model Permission</th>
+                <th>Power BI Permission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>G AAD ITANDS DS SDS I2P Power BI APP</td>
+                <td>Paul Everett</td>
+                <td>Read</td>
+                <td>Read access to Power BI App (I2P Analysis report only).</td>
+            </tr>
+            <tr>
+                <td>G AAD ITANDS DS SDS I2P Power BI Workspace</td>
+                <td>Paul Everett</td>
+                <td>Contribute Access to Power BI datasets</td>
+                <td>Contribute access to Power BI workspace (all reports).</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

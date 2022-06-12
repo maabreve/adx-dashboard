@@ -1,0 +1,63 @@
+<h3 class="mb-30p">Cyber Threat
+  <div id="count" class="font-size-100" *ngIf="rowsFull.length > 0">
+    <span pTooltip="View in IOC" class="m-0p p-0p link" (click)="goToIOC()">
+      ({{rowsFull.length}})
+    </span>
+  </div>
+</h3>
+<div class="header-button cursor-pointer" pTooltip="Copy Kusto Query" *ngIf="query !== ''">
+  <app-copy-button [query]="query"></app-copy-button>
+</div>
+<div *ngIf="isLoading">
+  <mat-spinner color=primary class="center-horizontally"></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <div class="mt-10p">
+    <div class="header-container">
+      <p-table #dt styleClass="p-datatable-gridlines"
+        [value]="rows"
+        [columns]="columns"
+        [resizableColumns]="true"
+        columnResizeMode="expand"
+        [paginator]="false"
+        [showCurrentPageReport]="false"
+        [scrollable]="false"
+        sortMode="multiple"
+        styleClass="p-datatable-sm"
+        [rowsPerPageOptions]="[25,50,100,150]"
+        [multiSortMeta]="[{field: 'Arcsight RT', order: -1}]">
+
+        <ng-template pTemplate="colgroup">
+          <colgroup>
+            <col *ngFor="let col of columns">
+          </colgroup>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th pResizableColumn *ngFor="let col of columns" [pSortableColumn]="col['field']">
+              <p-sortIcon [field]="col['field']"></p-sortIcon>
+              {{col['header']}}
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-item>
+          <tr [pSelectableRow]="item">
+            <td *ngFor="let col of columns">
+              <p *ngIf="col['field'] !== 'TC Link'" pTooltip={{item[col.field]}} class="m-0p p-0p">{{item[col['field']]}}</p>
+              <a *ngIf="col['field'] === 'TC Link'" pTooltip={{item[col.field]}} class="m-0p p-0p" [href]="item[col['field']]"
+                target="_blank">TC Link</a>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="w-100p p-20p text-center">
+    <button pButton type="button" label="More" icon="pi pi-plus" (click)="goToIOC()" *ngIf="rowsFull.length > 10">
+    </button>
+    <h3 *ngIf="rowsFull.length === 0">No registers found</h3>
+  </div>
+</div>

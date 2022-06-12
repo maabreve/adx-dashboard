@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<div class="darkMode">
+  <mat-sidenav-container id="home-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="sideMenuOpen" id="left-container">
+      <app-nav-menu-contents id="menuContents" [(sideMenuOpen)] ="sideMenuOpen"></app-nav-menu-contents>
+    </mat-sidenav>
+    <mat-sidenav-content id="main-container">
+      <router-outlet *ngIf="!isIframe"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

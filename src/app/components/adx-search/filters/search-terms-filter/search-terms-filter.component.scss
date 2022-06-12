@@ -1,0 +1,115 @@
+.mat-list-item {
+  height: 25px !important;
+}
+
+#list-box{
+  height: 120px;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 0px;
+  background-color: #2c2e2f;
+}
+
+:host ::ng-deep .mat-list-item-content {
+  padding: 0!important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+   border-bottom: 1px solid #a8a3a3;
+}
+
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content
+#search-terms-box {
+  padding: 0 15px !important;
+  font-size: 0.85em;
+}
+
+:host ::ng-deep  .mat-list-base {
+  padding-top: 0px !important;
+}
+
+#search-terms-text-box {
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #a8a3a3;
+  background-color: #2c2e2f;
+}
+
+#open-data-sources-box {
+  color: #ffffff;
+  padding: 12px 10px;
+  cursor: pointer;
+  background-color: #2c2e2f;
+}
+
+#open-data-sources-left {
+  float: left;
+  width: 50px;
+}
+
+#open-data-sources-middle {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#open-data-sources-right {
+  float: right;
+  width: 50px;
+  text-align: right;
+}
+
+#search-box-terms {
+  border: 1px solid #a8a3a3;
+  width: 290px;
+}
+
+#search-box-terms-info {
+  color: #a8a3a3;
+  padding: 5px 10px 0;
+}
+
+#search-box-terms-info-box {
+  height: 25px;
+  background-color: #2c2e2f;
+}
+
+#search-box-terms-info-left {
+  float: left;
+  width: 70px;
+}
+
+#search-box-terms-info-middle {
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+#search-box-terms-info-right {
+  float: right;
+  width: 50px;
+  text-align: right;
+}
+
+#delete-term {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  // color: # !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #99cc00 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #a8a3a3 !important;;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: transparent !important
+}

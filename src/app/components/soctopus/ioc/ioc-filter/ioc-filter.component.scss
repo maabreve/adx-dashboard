@@ -1,0 +1,53 @@
+#ioc-filter-container {
+  display: inline-flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.item-filter-container {
+  padding: 0 5px
+}
+.item-filter-container-sm {
+  flex-grow: 1;
+}
+
+.item-filter-container-lg {
+  flex-grow: 2;
+}
+
+:host ::ng-deep .p-dropdown {
+  height: 35px;
+}
+
+:host ::ng-deep .p-inputtext {
+  height: 35px;
+  font-size: 12px;
+}
+
+:host ::ng-deep .p-dropdown .p-inputtext{
+  padding: 7px 15px !important;
+  font-size: 12px;
+}
+
+:host ::ng-deep .p-component span {
+  width: 150px;
+}
+
+::ng-deep #dateRangePicker .mat-form-field-flex  {
+  padding-top: 0;
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  padding: 0 18px !important;
+}
+
+::ng-deep #dateRangePicker .mat-focus-indicator {
+  padding-top: 0.6em !important;
+}
+
+:host ::ng-deep .mat-form-field-type-mat-date-range-input .mat-form-field-infix {
+  width: inherit !important;
+}

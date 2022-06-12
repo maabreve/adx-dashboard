@@ -1,0 +1,179 @@
+.table-header{
+  display: flex;
+  justify-content: center;
+  background-color: #000000;
+  color:rgba(255, 255, 255, 0.87);
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.table-title {
+  text-align: center;
+}
+
+.table-title h3 {
+  margin: 0 !important;
+}
+
+.table-item  {
+  margin-right: 20px;
+}
+
+.switch-button {
+  position: relative;
+  top: 3px;
+  margin: 0 5px;
+}
+
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr {
+  font-size: 12px;
+  white-space: nowrap !important;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr {
+  background-color: #2c2e2f;
+}
+
+:host ::ng-deep .p-datatable-gridlines .p-datatable-thead > tr > th {
+  padding: 0px 7px !important;
+  text-align: center;
+}
+
+:host ::ng-deep .pi-fw {
+  font-size: 12px !important;
+}
+
+:host ::ng-deep .p-button.p-button-sm {
+  padding: 0.42475rem 0.775rem;
+}
+
+
+:host ::ng-deep .p-paginator .p-paginator-current {
+  font-size: 0.8rem !important;
+  margin: 0 !important;
+  height: 2rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  font-size: 12px !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-prev {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-next {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-last {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-dropdown-label {
+  font-size: 12px !important;
+  padding: 2px 10px 10px !important;
+}
+
+:host ::ng-deep .p-paginator .p-dropdown {
+    height: 1.5rem !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator-bottom {
+  padding: 5px !important;
+}
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 10px !important;
+  font-size: 12px !important;
+}
+
+
+
+:host ::ng-deep .p-datatable-gridlines .p-datatable-thead > tr > th {
+  padding: 0px 7px !important;
+  text-align: center;
+}
+
+:host ::ng-deep .pi-fw {
+  font-size: 12px !important;
+}
+
+:host ::ng-deep .p-button.p-button-sm {
+  padding: 0.42475rem 0.775rem;
+}
+
+
+:host ::ng-deep .p-paginator .p-paginator-current {
+  font-size: 0.8rem !important;
+  margin: 0 !important;
+  height: 2rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  font-size: 12px !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-prev {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-next {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-last {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-dropdown-label {
+  font-size: 12px !important;
+  padding: 2px 10px 10px !important;
+}
+
+:host ::ng-deep .p-paginator .p-dropdown {
+  height: 1.5rem !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator-bottom {
+  padding: 5px !important;
+}
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 10px !important;
+  font-size: 12px !important;
+}
+
+#table-content td {
+  padding: 0 15px !important;
+  overflow: hidden !important;
+  text-align: left;
+}
+
+#table-content th {
+  text-align: left;
+  font-size: 13px;
+}

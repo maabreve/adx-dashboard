@@ -1,0 +1,409 @@
+<div class="help-content">
+    <h1>Help</h1>
+
+    <h2>Content</h2>
+    <ul>
+        <li><a fragment="overview" (click)="navigateToSection('overview')">Overview</a></li>        
+        <li><a fragment="adxsearch" (click)="navigateToSection('adxsearch')">ADXsearch</a></li>
+        <ul>
+            <li><a fragment="feeds" (click)="navigateToSection('feeds')">Feeds</a></li>
+            <li><a fragment="howto" (click)="navigateToSection('howto')">How To</a></li>
+            <ul>
+                <li><a fragment="buildnewquery" (click)="navigateToSection('buildnewquery')">Building a new query</a></li>
+                <li><a fragment="refinequery" (click)="navigateToSection('refinequery')">Refining a query</a></li>
+                <li><a fragment="exporting" (click)="navigateToSection('exporting')">Exporting</a></li>
+            </ul>
+        </ul>
+        <li><a fragment="soctopus" (click)="navigateToSection('soctopus')">SOCtopus</a></li>
+        <ul>           
+            <li><a fragment="ntid" (click)="navigateToSection('ntid')">NTID</a></li>
+            <li><a fragment="domain" (click)="navigateToSection('domain')">Domain</a></li>
+            <li><a fragment="ioc" (click)="navigateToSection('ioc')">IOC</a></li>
+            <li><a fragment="ip" (click)="navigateToSection('ip')">IP</a></li>
+            <li><a fragment="host" (click)="navigateToSection('host')">Host</a></li>   
+        </ul>
+    </ul>
+   
+    <h2 id="overview">Overview</h2>
+    <p>This application is a data search and analytics tool that has been designed to allow data to be queried using multiple criteria that can target multiple data feeds over a specific period. The SDS ADXsearch application is an intuitive web interface, that allows users to select feeds, fields and drill-down to explore, summarise and export data without having to write ADX queries. This improves the capacity to filter and analyse data fields available from multiple data feeds.</p>
+
+
+    <h2 id="adxsearch">ADXsearch</h2>
+    <p>The ADXsearch application allows users to make a quick data search over the past 2 year’s worth of data using Azure Data Explorer.</p>
+
+    <h3>What is Azure Data Explorer?</h3>
+    <p>A big data analytics cloud platform optimized for interactive, ad-hoc queries over structured, semi-structured and unstructured data.</p>
+    <ol>
+        <li>Fully managed – We have no servers to manage or Patch!</li>
+        <li>Ability to work with any kind of data: structured, semi-structured (JSON and more) and unstructured (free text).</li>
+        <li>High velocity (millions of events per second), low-latency (seconds) and linear scale ingestion of raw data.</li>
+        <li>Scalable query performance. (Auto Scaling)</li>
+        <li>Rich and powerful query capabilities, supporting the whole complexity spectrum: from a simple keyword search to the complex time series and behavioural analytics.</li>
+        <li>Simple, yet powerful and productive query language and toolset.</li>
+        <li>Kusto – ‘KQL’ – used across all Microsoft tools particularly the hunting tools.</li>
+    </ol>
+
+    <p>For more information on Azure Data Explorer please refer to <a href="https://docs.microsoft.com/en-us/azure/data-explorer/">Microsoft’s documentation</a>.</p>
+    <p>Please also refer to <a href="https://docs.microsoft.com/en-us/azure/data-explorer/write-queries">Microsoft’s writing queries guide</a> and <a href="https://docs.microsoft.com/en-us/azure/data-explorer/kql-quick-reference">kql quick reference</a> to learn more about Kusto Query Language. Bp also provides a great training course on the learning portal called <a href="https://bp.csod.com/ui/lms-learning-details/app/externalContent/edb0d196-6683-4898-a5cb-9f18faf35e9c">Kusto Query Language (KQL) from Scratch</a>.</p>
+
+    <h3 id="feeds">Feeds</h3>
+    <p>The application can search across one or more of the following 9 data feeds:</p>
+    <ul>
+        <li>Active Directory</li>
+        <li>VPNData</li>
+        <li>DefenderATP</li>
+        <li>DefenderAV</li>
+        <li>Falcon</li>
+        <li>IPData</li>
+        <li>McAfee ePolicy</li>
+        <li>Proxy Logs (IronPort, ScanSafe, Zscaler)</li>
+        <li>SourceFire</li>
+    </ul>
+
+    <p>Within each of the feeds even more specific queries can be defined by selecting specific fields such as Source IP or Destination Host. Additionally, ADXsearch provides the capability to search the certain fields across all data feeds using tags which select the relevant fields under all the individual feeds, providing more seamless querying for data analysis.</p>
+
+
+    <h3 id="howto">How To</h3>
+
+    <h4 id="buildnewquery">Building a new query</h4>
+
+    <ol>
+        <li>Select one or more fields from the available Feeds by clicking on specific field names or tags, for example Name under the Active Directory feed and the all NTIDs tag across all 9 data feeds. <br> 
+            When searching a certain data source field, if it has a target symbol next to it such as Name in the Active Directory example an exact match is used when querying the data source, for a result to be returned the whole term must be entered. <br>
+            Whereas the other fields such as Destination Host under the VPNData data feed will query using partial matches of the entered term and therefore can still get a result.<br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchfield.png" alt="Selecting a data field"/> 
+            <img src="../../../../assets/help/adxsearch/helpadxsearchtag.png" alt="Selecting a tag"/>
+        </li>
+        <li>Type and confirm one or more text filters – multiple terms can be pasted in one go as text separated by breaklines from a clipboard.<br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchnotepad.png" alt="Clipboard text separated by breaklines"/> 
+            <img src="../../../../assets/help/adxsearch/helpadxsearchterms.png" alt="Search terms"/>
+        </li>
+        <li>Select the data range using either the following quick button options “Last Day”, “Last Week”, “Last Month”, “3 Months”, “6 Months” and “12 Months” or by picking specific start and end dates using the datetime picker – if no range is specified the default “Last Month” is used.<br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchdaterange.png" alt="Selecting a date range"/> 
+        </li>
+        <li>Select the results limit (100, 1K, <b>10K</b>[default], 100k).<br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchresultlimit.png" alt="Selecting a result limit"/> 
+        </li>
+        <li>Click “Search” to proceed with the query configured or click “Reset” to clear selections.<br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchsearchorreset.png" alt="Search or reset query"/>
+        </li>
+        <li>Selections are translated into an ADX query, which searches across the selected fields – the kusto query used is visible by clicking on the purple information icon top right on the result table.
+            <img class="fullpage" src="../../../../assets/help/adxsearch/helpadxsearchkustoquery.png" alt="Show kusto query"/>
+        </li>
+        <li>Whilst the query is running the application displays the spinning wheel and sends the fully query to ADX, there is also a “Cancel Query” button which can be clicked to terminate the query if it is taking too long.
+            <img class="fullpage" src="../../../../assets/help/adxsearch/helpadxsearchcancel.png" alt="Query can be cancel whilst still processing"/> 
+        </li>
+        <li>Results are shown as a table for each of the data feeds in seperate tabs in the main result area.
+            <img class="fullpage" src="../../../../assets/help/adxsearch/helpadxsearchresults.png" alt="Search result table"/>
+        </li>
+        <li>A time clustered column chart can be viewed by clicking on the “Show Timeline” button in the bottom right by the corner of the results table. <br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchshowtimeline.png" alt="Show timeline" width="45%"/>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchtimeline.png" alt="Timeline" width="45%"/>
+        </li>
+        <li>A clustered bar chart with the distribution of records by table (Proxy Logs, VPNData, etc.) can be viewed by clicking on the "Show Histogram” button in the bottom right by the corner of the results table.
+            <img src="../../../../assets/help/adxsearch/helpadxsearchshowhistogram.png" alt="Show histogram" width="45%"/>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchhistogram.png" alt="Histogram" width="45%"/>
+        </li>
+        <li>Once the results are loaded, additional filters can be added and logic operator (“AND”, “OR”, “AND NOT”) can be used.</li>
+    </ol> 
+
+
+    <h4 id="refinequery">Refining a query</h4>
+    <p>User can click on the components of the result area to add additional filter to the data already received from ADX.</p>
+    
+    <ol>
+        <li>Double-click on the timeline or histogram.</li>
+        <li>The selected field and field value added are applied as a filter on the data already loaded from ADX.</li>
+        <li>An indication of the additional filter is on the top of the main content area, so it this additional filter can be removed.</li>
+    </ol>
+
+
+    <h4 id="exporting">Exporting</h4>
+    <ol>
+        <li>Search results can be export as CSV or Excel by clicking either the blue “Export to CSV” or green “Export to XLS” buttons on the top right of the table. <br>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchcsv.png" alt="Export to CSV"/>
+            <img src="../../../../assets/help/adxsearch/helpadxsearchxls.png" alt="Export to XLS"/>
+        </li>
+        <li>File is generated and automatically downloaded.</li>
+    </ol>
+
+
+
+    <h2 id="soctopus">SOCtopus</h2>
+
+    
+    <h3 id="ntid">NTID</h3>
+
+    <p>The NTID tool is used to investigate users either by their NTID or UPN.</p>
+    <p>At the top of the page there are some filters which can be used to narrow down the search after entering a NTID or UPN into the search bar on the left. The date range can be selected in a two ways, the first is by selecting one of the following the options “Last Day”, “Last Week”, “Last Month”, “3 Months”, “6 Months” and “12 Months” and the second is picking specific start and end dates using the datetime picker on the far right – if no range is specified the default “Last Month” is used.</p>
+
+    <img class="fullpage" src="../../../../assets/help/ntid/helpntidfilters.png" alt="NTID landing page with search and data range filter" height="720px"/>
+
+    <p>The “User Information” section is populated with all the information pertaining to the NTID or UPN searched.</p>
+    <img class="fullpage" src="../../../../assets/help/ntid/helpntiduserinfo.png" alt="User information" height="720px"/>
+    <p>The information displayed for a user are:</p>
+    <ul>
+        <li>Password Last Changed – the date and time (displayed as DD-MM-YY HH:MM:SS) when the password of the User was last modified.</li> 
+        <li>Account Disabled – A yes or no answer showing if the user is still active.</li>
+        <li>NTID – the User’s NTID.</li>
+        <li>Most Recent Host – the most recent Host the User used to log into BP accounts.</li>
+        <li>Most Recent IP – the User’s most recent IP.</li> 
+        <li>Address – the address of the office the User is located.</li>
+        <li>Email – the User’s email address, this is provided as a hyper link that redirects the searching user to their email address and opens a new email so that the searching user may immediately send an email to the searched User.</li>
+        <li>Phone – the User’s phone number, displayed with an area code for ease of contact. This is also a hyperlink, which allows the searching user to make a call to the searched User.</li> 
+        <li>Job Title – the job title of the User.</li> 
+        <li>Company – the specific company the User works for.</li> 
+        <li>Region Code – the region code of where the User works.</li>
+        <li>Site Code – the site code of where the User works.</li>
+        <li>Entity – the entity of the business the User works for.</li>	 
+        <li>Sub-Entity – the sub-entity of the business the User works for.</li>
+        <li>Enterprise – the enterprise of the business the user works for.</li>
+        <li>Manager – the User’s line manager.</li>
+        <li>Manager NTID – the User’s line manager’s NTID.</li>
+    </ul>
+
+    <p>The user information can be easily copied to clipboard by clicking the copy button in the top right of the box.</p>
+
+    <p>The next section has two tabs:</p>
+    
+    <p>1) Alerts</p>
+    <img class="fullpage" src="../../../../assets/help/ntid/helpntidalerts.png" alt="User's alerts" height="720px"/>
+    <p>The Alerts tab shows any data pertaining to the User where any action they have taken has triggered an alert. The data displayed is in two columns, and for ease of understanding, the data displayed is headed by the data source the information comes from.</p>
+
+    <ol>
+        <li>Advanced Threat Detections</li>
+        <ul>
+            <li>On the left side, a box labelled “Crowdstrike Falcon” displays the following data:</li>
+            <ul>
+                <li>Adware Detection</li>
+                <li>Blocked Hash Detection</li>
+                <li>Command Detection</li>
+                <li>Credential Theft Detection</li>
+                <li>CS Intel Detection</li>
+                <li>DLL Detection</li>
+                <li>File Detection</li>
+                <li>ISS Detection</li>
+                <li>Malware Detection</li>
+                <li>Miner Detection</li>
+                <li>Network Detection</li>
+                <li>Overwatch Detection</li>
+                <li>Process Detection</li>
+                <li>Ransomware Detection</li>
+                <li>Other</li>
+            </ul>
+            <li>On the right side, the following data is displayed:</li>
+            <ul>
+                <li>Windows Defender ATP Alerts</li>
+                <li>Fireeye Events</li>
+                <li>SourceFire Events</li>
+            </ul>
+        </ul>
+        <li>Antivirus Detections</li>
+            <ul>
+                <li>On the left side, the following data is displayed:</li>
+                <ul>
+                    <li>Falcon NetGen AV Alerts</li>
+                    <li>Windows Defender ATP Alerts </li>
+                </ul>
+                <li>On the right side, the following data is displayed:</li>
+                <ul>
+                    <li>McAfee ePO Events</li>
+                </ul>
+            </ul>
+    </ol>
+    <p>At the end of each row a number is displayed for each individual search result to show how many incidents of each category have triggered an alert. Each number is a hyperlink, which redirect to the ADXsearch tool and to the specific search result, to facilitate further investigation of the data results.</p>
+
+    <p>2) AD Events, Hosts & IPs</p>
+    <img class="fullpage" src="../../../../assets/help/ntid/helpntidadevents.png" alt="User's AD Events, Host & IPs" height="720px"/>
+    <p>This tab has 4 main boxes which display the following:</p>
+    <ol>
+        <li>Top AD Events – lists the top 5 AD Events, along with their relevant code and the number of occurrences per event type.</li>
+        <li>Top 5 IPs – lists the top 5 IPs the user has accessed and the number of occurrences.</li>
+        <li>The Top 5 Host – lists the top 5 hosts the user has used and the number of occurrences.</li>
+        <li>The Top 5 Matching Host:IP Pair – lists the top 5 pairs and the number of occurrences.</li>
+    </ol>
+
+    <h3 id="domain">Domain</h3>
+
+    <p>This tool is used to investigate users and IPs that have visited a specified domain name to identify threats.</p>
+
+    <p>At the top of the page there are some filters which can be used to narrow down the search after entering a domain into the search bar on the left. The date range can be selected in a two ways, the first is by selecting one of the following the options “Last Day”, “Last Week”, “Last Month”, “3 Months”, “6 Months” and “12 Months” and the second is picking specific start and end dates using the datetime picker on the far right – if no range is specified the default “Last Month” is used.</p>
+
+    <img class="fullpage" src="../../../../assets/help/domain/helpdomainfilters.png" alt="Domain landing page with search and data range filter" height="720px"/>
+
+    <p>The “Proxy Logs” section on the left will then be populated with the following three tables:</p>
+    <ul>
+        <li>Top 10 NTIDs – Lists the count of records of the specified domain grouped by NTID.</li>
+        <ol>
+            <li>Clicking on the NTID redirects to the NTID tab, listing the user information filtering by clicked NTID.</li>
+            <li>Clicking on the total count redirects to ADXsearch, listing data from Proxy Logs and filtering by clicked NTID and date. Results returned can be narrowed down further by entering the domain in the search bar at the top right of the table.</li>
+        </ol>
+        <li>Top 10 Source IPs – Lists the count of records of the specified domain grouped by Source IP.</li>
+        <ol>
+            <li>Clicking on the Source IP Address redirects to the IP tab, filtering by clicked IP.</li>
+            <li>Clicking on the total count redirected to ADXsearch, listing the data from Proxy Logs and filtering by clicked Source IP and date. Results returned can be narrowed down further by entering the domain in the search bar at the top right of the table.</li>
+        </ol>
+        <li>Top 10 Destination IPs – Lists the count of records of the specified domain grouped by Destination IP.</li>
+        <ol>
+            <li>Clicking on the Destination IP Address redirects to the IP tab, filtering by clicked IP.</li>
+            <li>Clicking on the total count redirects to ADXsearch, listing the data from Proxy Logs and filtering by clicked Destination IP and date. Results returned can be narrowed down further by entering the domain in the search bar at the top right of the table.</li>
+        </ol>
+    </ul>
+
+    <img class="fullpage" src="../../../../assets/help/domain/helpdomainproxy.png" alt="Domain proxy logs" height="720px"/>
+
+
+    <p>The “Cyber Threat Detected” section on the right shows a list of the relevant cyber threats previously detected by querying IOC data using the domain specified, it returns all rows of type “HOST”.</p>
+
+    <p>The table displays the following for each threat:</p>
+
+    <ul>
+        <li>Priority – either “High” or “Very High”, only incidents given a score of 80/100 or higher are brough into ThreatConnect, with very few and exceptional exceptions (for example if a threating domain specifically targets BP).</li>
+        <li>Indicator – what specifically was the threat (what specific domain).</li>
+        <li>Owner – where the threat originated from, so if a User needs to go back to ThreatConnect and try to track down the source they can follow the TC Link and search the data source more thoroughly.</li>
+        <li>TC Link – a URL link that takes the User directly to the data source. This does require previous access permissions set by BP and cannot be documented here.</li>
+        <li>ArcSight RT – the date that the threat first touched based within ArcSight.</li>
+    </ul>
+
+    <img class="fullpage" src="../../../../assets/help/domain/helpdomaincyberthreat.png" alt="Domain cyber threat" height="720px"/>
+
+    <p>Methods to further investigate a threat:</p>
+
+    <ol>
+        <li>Clicking the total count above the table on the left redirects to the IOC tab, filtering by the specified domain and data range. Additionally, when in the IOC tab, the following default filters will be set “Action Taken” = false and “No Matches”.</li>
+        <li>Clicking on the TC Link redirects to the data source in ThreatConnect.</li>
+    </ol>
+
+    <h3 id="ioc">IOC</h3>
+    <p>The Incidents of Concern (IOC) tool is used to identify threats and to make historical searches of those threats with BP. This tool provides an intuitive and powerful interface that queries date using ADXsearch and allows for filtering and extensive analysis of threats by navigating to other useful tabs in SOCtopus to investigate specific details. For example, this platform can be used to find out whether BP NTIDs or IPs have been in any Domain before a cyber-attack.</p>
+
+    <ol>
+        <li>When you first click of the IOC tab, the ThreatConnect IOCs is populated with all records with the filtered Actioned = false, sorted by Last Updated descending.
+            <img class="fullpage" src="../../../../assets/help/ioc/helpioclanding.png" alt="IOC landing page" />
+        </li>
+        <li>To refine the records, there are some filters just above the table including searching for a term and selecting date range. A priority level can also be selected from All, High and Very High; a type can be selected between All, Address, Email Address, File and Host; finally the search can be narrowed down by owner including All, BP, iSIGHT – FireEye iSIGHT Critical Infrastructure and iSIGHT – FireEye iSIGHT Cyber Espionage.
+            <img class="fullpage" src="../../../../assets/help/ioc/helpiocfilters.png" alt="IOC filter options" /> <br>
+            Each record has the following 15 columns:
+            <ul>
+                <li>Date Added – the date the threat was added to IOC and is assigned by ThreatConnect.</li>
+                <li>Last Update – also assigned by ThreatConnect.</li>
+                <li>Priority – either “High” or “Very High”, only incidents given a score of 80/100 or higher are brough into ThreatConnect, with very few and exceptional exceptions (for example if a threating domain specifically targets BP).</li>
+                <li>Type – what type of threat it was (Address, Email Address, File or Host).</li>
+                <li>Indicator – what specifically was the threat (what specific Address, Email Address, File or Host triggered the response). Depending on what type of Indicator it is, depends on what fields is being searched within the log sources of data. So, for example, if it is an IP indicator or a network-based Indicator, the IOC will be looking through DNS logs, Proxy log, anything that is network based that may potentially have that indicator.</li> 
+                <li>Confidence – the level of confidence that this is a malicious indicator, set by the vendor. Anything below 80 is deemed to be a low or medium threat and will be very unlikely to appear in IOC (for example, if it was extremely targeting intelligence to directly related to oil and gas, or specifically mentioning BP itself). Medium to Low indicators are routinely investigated by ArcSight in 24-hour periods.</li>
+                <li>Score – the threat score of the indicator, how likely it is to be malicious, also set by the vendor. Anything below a 3.0 score is deemed to be low or medium threat and will be very unlikely to appear in IOC (and like with Confidence, the exceptions will be for example, if it was extremely targeting intelligence directly related to oil and gas, or specifically mentioning BP itself). Both the Confidence and Score levels are ThreatConnect values, and are both used to determine whether something is a high, medium or low priority for BP.</li>
+                <li>Owner – where the threat originated from, so if a User needs to go back to ThreatConnect and try to track down the source they can follow the TC Link and search the data source more thoroughly.</li>
+                <li>ID</li>
+                <li>Hit Source</li>
+                <li>Actioned – whether the SOC team have investigated the threat and deemed it safe.</li>
+                <li>Actioned By – the individual within the SOC team who has completed the investigation, represented in the form of the user ID rather than a full name.</li>
+                <li>Actioned Time – when specifically, the threat was marked as actioned.</li>
+                <li>TC Link – a URL link that takes the User directly to the data source. This does require previous access permissions set by BP and cannot be documented here.</li>
+                <li>ArcSight RT – the date that the threat first touched based within ArcSight.</li>
+                <li>HasMatches</li>
+                <li>ADX RT – the date that the threat first touched base within ADX. The reason both ArcSight RT and ADX RT are shown is to show the drastic discrepancies of time between receipt of data between both platforms.</li>
+            </ul> <br>
+        </li>
+        <li>To get further details of a particular record, click on the row. <br>
+            <img class="fullpage" src="../../../../assets/help/ioc/helpiocselectrecord.png" alt="Select a record to see details" />
+        </li>
+        <li>The top 100 lines of matching results is fetched and is returned in the “Match Results” table, again sorted, sorted by date descending. In the results there are the following columns: Date Time, Domain, NTID, Source IP, Destination IP, adHostname and Feed (Data Source). At the top right of the table is an “Export” button which downloads the results in a CSV file when clicked.</li>
+        <li>Each of the returned results have the following 7 columns: Time, Domain, NTID/UPN, Source IP, Destination IP, Host Name and Datasource which all related to the triggered alert. The NTID/UPN value for a record can be clicked to be redirected to the NTID tab in SOCtopus which loads the user’s details. These matching records can be exported for further analysis.</li>
+        <li>Once a record has been investigated and dealt with, click the “Take Action” at the top right of the “ThreatConnect IOCs” table. This will change the row to being action so will no longer be visible in the table unless you switch the “Action Taken” toggle to true. Screenshot highlighting the “Take Action” button and the “Action Taken” toggle. <br>
+            <img class="fullpage" src="../../../../assets/help/ioc/helpioctakeaction.png" alt="Take action on a record" />
+        </li>
+        <li>When in the “Action Taken” is set to true table view, any record here can be sent back to be review by removing the action - this places it back so it can be investigated further.</li>
+    </ol>
+
+    <h3 id="ip">IP</h3>
+
+    <p>This tool is used to investigate users that have visited a specified IP to any identify threats related to the IP address.</p>
+
+    <p>At the top of the page there are some filters which can be used to narrow down the search after entering an IP address into the search bar on the left. The date range can be selected in a two ways, the first is by selecting one of the following the options “Last Day”, “Last Week”, “Last Month”, “3 Months”, “6 Months” and “12 Months” and the second is picking specific start and end dates using the datetime picker on the far right – if no range is specified the default “Last Month” is used.</p>
+
+    <img class="fullpage" src="../../../../assets/help/ip/helpipfilters.png" alt="IP filter options"/>
+
+    <p>Once a search returns, the top “WhoIs Data” section is populated with details of the IP address.</p>
+    <ol>
+        <li>Clicking “Copy Raw” will copy the data to clipboard.</li>
+        <li>Clicking “Maps” redirects to Google maps so the data can be visualised based on latitude and longitude data.</li>
+    </ol>
+
+    <img class="fullpage" src="../../../../assets/help/ip/helpipwhoisdata.png" alt="IP Whois Data section"/>
+
+    <p>The next section on the left is “Source Fire” which lists the count of records of the IP address grouped by Direction, Alert Category and Rule Name. Clicking on “Total” redirects to ADXsearch, listing data from Source Fire and filtering by clicked Alert Category and Rule Name of the row, IP (Source or Destination IP, depending on the Direction) and date.</p>
+
+    <img class="fullpage" src="../../../../assets/help/ip/helpipsourcefire.png" alt="Source Fire Alerts"/>
+
+    <p>To the right is the “Cyber Threat Detected” section which lists the relevant cyber threats previously detected by querying IOC data using the IP address specified.</p>
+    
+    <p>The table displays the following for each threat:</p>
+
+    <ul>
+        <li>Priority – either “High” or “Very High”, only incidents given a score of 80/100 or higher are brough into ThreatConnect, with very few and exceptional exceptions (for example if a threating domain specifically targets BP).</li>
+        <li>Indicator – what specifically was the threat (what specific domain).</li>
+        <li>Owner – where the threat originated from, so if a User needs to go back to ThreatConnect and try to track down the source they can follow the TC Link and search the data source more thoroughly.</li>
+        <li>TC Link – a URL link that takes the User directly to the data source. This does require previous access permissions set by BP and cannot be documented here.</li>
+        <li>ArcSight RT – the date that the threat first touched based within ArcSight.</li>
+    </ul>
+
+    <img class="fullpage" src="../../../../assets/help/ip/helpipcyberthreat.png" alt="IP cyber threat"/>
+
+    <p>Methods to further investigate a threat:</p>
+
+    <ol>
+        <li>Clicking the total count above the table on the left redirects to the IOC tab, filtering by the specified IP address and data range. Additionally, when in the IOC tab, the following default filters will be set “Action Taken” = false and “No Matches”.</li>
+        <li>Clicking on the TC Link redirects to the data source in ThreatConnect.</li>
+    </ol>
+
+    <p>Navigating to the DNS/Proxy tab displays the following three lists of data:</p>
+    <ol>
+        <li>The “NTID” section Lists the count of records filtered by the IP address and grouped by NTID.
+            <ol>
+                <li>Clicking on an NTID redirects to the NTID tab, listing the user information filtering by clicked NTID.</li>
+                <li>Clicking on the total count redirects to ADXsearch, listing the data from Proxy Logs and filtering by specified IP address and date. Results returned can be narrowed down further by entering the NTID in the search bar at the top right of the table.</li>
+            </ol>
+        </li>
+        <li>The “Domains Source” section lists the count of records filtered by the IP address and grouped by Domain reached as Source IP.
+            <ol>
+                <li>Clicking on the Domain redirects to the Domain tab, filtering by the clicked Domain.</li>
+                <li>Clicking the total count redirects to ADXsearch, listing the data from Proxy Logs and filtering by specified IP (filtered by Source IP) and date. Results returned can be narrowed down further by entering the domain in the search bar at the top right of the table.</li>
+            </ol>
+        </li>
+        <li>The “Domains Destination” section lists the count of records filtered by the IP address and grouped by Domain reached as Destination IP.
+            <ol>
+                <li>Clicking on the Domain redirects to the Domain tab, filtering by the clicked Domain.</li>
+                <li>Clicking the total count redirects to ADXsearch, listing the data from Proxy Logs and filtering by specified IP (filtered by Destination IP) and date. Results returned can be narrowed down further by entering the domain in the search bar at the top right of the table.</li>
+            </ol>
+        </li>
+    </ol>
+
+    <h3 id="host">Host</h3>
+    <p>This tool is used to investigate data related to a search host name, such as IP for that machine, who the machine belongs to and if the machine is linked to any IDS alerts.</p>
+
+    <p>At the top of the page there are some filters which can be used to narrow down the search after entering a host name into the search bar on the left. The date range can be selected in a two ways, the first is by selecting one of the following the options “Last Day”, “Last Week”, “Last Month”, “3 Months”, “6 Months” and “12 Months” and the second is picking specific start and end dates using the datetime picker on the far right – if no range is specified the default “Last Month” is used. </p>
+
+    <img class="fullpage" src="../../../../assets/help/host/helphostfilters.png" alt="Host filters"/>
+
+    <p>Once a search returns, the top "Host Details" section is populated with deatils of the specified host name. Clicking on the "Last" or "Previous" NTID displayed redirects to the NTID tab, filtering by the clicked NTID.</p>
+
+    <img class="fullpage" src="../../../../assets/help/host/helphostdetails.png" alt="Host details section"/>
+
+    <p>The next section has two tabs:</p>
+
+    <p>The first is the "Alerts" tab which displays a summary of alerts for the machine.</p>
+    <ol>
+        <li>Clicking on an alert redirect to ADXsearch, listing the data and filtering by the specified alert.</li>
+    </ol>
+
+    <img class="fullpage" src="../../../../assets/help/host/helphostalerts.png" alt="Host alerts tab"/>
+
+    <p>The second “IPs” tab displays a ranked summary of the most recent IPs with counts that the machine has had on the network.</p>
+    <ol>
+        <li>Clicking on the IP redirects to the IP tab, filtering by the clicked IP address.</li>
+        <li>Clicking the total count redirects to ADXsearch, listing the data from Proxy Logs and filtering by specified IP address and date.</li>
+    </ol>
+
+    <img class="fullpage" src="../../../../assets/help/host/helphostips.png" alt="Host alerts tab"/>
+
+</div>

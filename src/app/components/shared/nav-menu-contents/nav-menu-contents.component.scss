@@ -1,0 +1,102 @@
+#menu-main-title {
+    background: none;
+    font-weight: 100;
+    color: rgba(255,255,255,0.5);
+    height: 3em;
+}
+
+.float-right{
+    float: right;
+}
+
+#topButtons{
+    padding: 3px 10px 0 !important;
+}
+
+#topButtons a {
+    cursor: pointer;
+}
+
+#topButtons a:hover {
+    background: none !important;
+}
+
+.menu-title {
+    border: 1 0px solid white !important;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin-top: 10px !important;//Add this style to the other titles
+    margin-bottom: 0px !important;
+    padding-left: 10px;
+}
+
+.custom-restricted-width {
+    display: inline-block;
+}
+
+.menu-link-bottom {
+    padding: 5px 0px !important;
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+mat-nav-list a:hover, mat-nav-list .current {
+    color: white;
+    //background-color: #99cc00 !important;
+}
+
+.mat-icon {
+    background-color: #555;
+    border-radius: 15% !important;
+}
+
+.mat-line {
+    font-size: small !important;
+}
+
+.mat-list-item {
+    height: 40px !important;
+}
+
+.mat-list-text {
+    padding-left: 10px !important;
+}
+
+.iconButton {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    box-sizing: content-box;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.circleButton {
+    border-radius: 100% !important;
+}
+
+#menuContents {
+    display: flex;
+    flex-wrap: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#div-bottom {
+    display: block;
+    position: relative;
+    bottom: 5px;
+    width: inherit;
+  }
+
+.align-center{
+    text-align: center !important;
+}
+
+.ml-auto{
+    margin-left: auto !important;
+}

@@ -1,0 +1,36 @@
+<div id="ioc-filter-container" class="w-100p">
+  <div style="flex-grow: 2; padding: 0 5px">
+    <span>Search &nbsp;</span>
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input #searchIndicator type="text" pInputText [ngModel]="indicator" (keyup.enter)="indicatorChanged(searchIndicator.value)" placeholder="example.com (Press Enter)" style="min-width: 210px" />
+    </span>
+  </div>
+  <div style="flex-grow: 1; padding: 0 5px">
+    <span style="position: relative; top: -3px">Date &nbsp;</span>
+      <mat-form-field id="dateRangePicker" appearance="fill" style="height: 30px">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker" id="-date-range-container">
+          <input id="startDate" matStartDate [(ngModel)]="lastUpdatedBegin"
+            placeholder="Start date">
+          <input id="endDate" matEndDate [(ngModel)]="lastUpdatedEnd" (dateChange)="dateRangeChanged()"
+            placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+  </div>
+
+  <div style="flex-grow: 1; padding: 0 5x">
+    <span>Priority &nbsp;</span>
+    <p-dropdown [options]="priorities" ([ngModel])="priority" (onChange)="priorityChanged($event)" optionLabel="name" optionValue="name" class="priority-dropdown"></p-dropdown>
+  </div>
+  <div style="flex-grow: 1; padding: 0 5px">
+    <span>Type &nbsp;</span>
+    <p-dropdown [options]="types" ([ngModel])="type" (onChange)="typeChanged($event)" optionLabel="name" optionValue="name" id="type-dropdown"></p-dropdown>
+  </div>
+  <div style="flex-grow: 1; padding: 0 5px;">
+    <span>Owner &nbsp;</span>
+    <p-dropdown [options]="owners" ([ngModel])="owner" (onChange)="ownerChanged($event)" optionLabel="name" optionValue="name" id="owner-dropdown"></p-dropdown>
+  </div>
+</div>

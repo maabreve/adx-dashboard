@@ -1,0 +1,16 @@
+.kusto-explorer-content {
+    padding: 2em !important;
+}
+ 
+.warning {        
+    display: flex;
+    align-items: center;
+}
+ 
+a
+  {
+      color: gray;
+  }
+  
+.material-icons.orange { color: #b4701d; }
+.material-icons.red { color: #b42222; }

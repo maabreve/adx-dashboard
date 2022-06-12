@@ -1,0 +1,91 @@
+<div class="content">
+    <h1>Resilient Incident Dashboard</h1>
+    <p>
+        Power BI report with insights on incident distribution by location and ratings.
+    </p>
+    <p>
+        <a href="https://app.powerbi.com/Redirect?action=OpenApp&appId=38f6055d-c0aa-4faa-a1d6-5422a8eee234&ctid=ea80952e-a476-42d4-aaf4-5457852b0f7e"
+            target="incident-dashboard">
+            <img src="../../../../../assets/incident-dashboard/incident-dashboard.png" alt="Open Power BI App"
+                width="220px">
+        </a>
+        <br>
+        (click on the image to open in a new tab)
+
+    </p>
+    <br>
+    <h2>Data Sources</h2>
+    <p>
+        This project uses data from Resilient (list of incidents and types)).
+        <br>
+    </p>
+    <h2>Data Refresh</h2>
+    <p>Incident reports are refreshed daily 05:00 AM UTC.</p>
+
+    <h2>Model</h2>
+    <p>The model has two tables:
+
+        <b>Incident</b>: List of incidents with key fields.
+        <b>Incident Detail</b>: List of incidents with all fields, with access allowed only to members of groups "G AAD
+        ITANDS DS SDS RID Power BI APP Details" or "G AAD ITANDS DS SDS RID Power BI Workspace".
+    </p>
+
+    <h2>Metrics</h2>
+    <p>
+        The model uses the Discovered Date as the main date field. As some incidents have multiple values for some
+        fields (Incident Type, Action Taken, Member, Isp Attach Vector, Isp Operating System, Impacted Business /
+        Entity, KillChain Stage, Impacted Region, Source of Intelligence and I2p Software Download Infection), all
+        counts are using a DISTINCT in the Incident ID.
+    </p>
+
+    <h2>Reports</h2>
+    <p>Two reports are available from the Power BI Workspace "Incident Dashboard":</p>
+
+    <p><b>Incident Dashboard</b>: This is the main report with pages for Overview, Location, Rating, Totals and Incident
+        Details. The report has a filter to list only incidents with rating as P1, P2, P3 or P4.</p>
+    <p><img src="../../../../../assets/incident-dashboard/incident-dashboard-report-rating.png" alt="Report"
+            width="660px"></p>
+
+
+    <p><b>Monitoring</b>: Monitoring of the process to load new data into the model.</p>
+    <p><img src="../../../../../assets/incident-dashboard/incident-dashboard-report-monitoring.png" alt="Report"
+            width="660px"></p>
+
+    <br>
+    <h2>Access</h2>
+    <p>Access to the model and report are managed by the following groups:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Owner</th>
+                <th>Model Permission</th>
+                <th>Power BI Permission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>G AAD ITANDS DS SDS RID Power BI APP <br> (GAADITANDSDSSDSRIDPowerBIAPP@bp.com)</td>
+                <td>Davina Ragoomundun,<br>Ibukun Adenekan</td>
+                <td>Read access to Power BI datasets</td>
+                <td>Read access to Power BI App</td>
+            </tr>
+            <tr>
+                <td>G AAD ITANDS DS SDS RID Power BI APP Details <br> (GAADITANDSDSSDSRIDPowerBIAPPDetails@bp.com)</td>
+                <td>Davina Ragoomundun,<br>Ibukun Adenekan</td>
+                <td>Read access to Power BI datasets, including incident details</td>
+                <td>Read access to Power BI App</td>
+            </tr>
+            <tr>
+                <td>G AAD ITANDS DS SDS RID Power BI Workspace<br> (GAADITANDSDSSDSRIDPowerBIWorkspace@bp.com)
+                </td>
+                <td>Davina Ragoomundun,<br>Ibukun Adenekan</td>
+                <td>Contribute Access to Power BI datasets</td>
+                <td>Contribute access to Power BI workspace and Power BI App</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>

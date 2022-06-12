@@ -1,0 +1,61 @@
+<div class="">
+  <div id="search-box-terms">
+    <div id="open-data-sources-box"
+        (click)="toggleDataSourceFilters()">
+      <div id="open-data-sources-left">DATA</div>
+      <div id="open-data-sources-right">></div>
+      <div id="open-data-sources-middle">Select datasources</div>
+      <div class="clearfix"></div>
+    </div>
+
+    <mat-form-field
+      appearance="fill"
+      id="search-terms-text-box">
+      <mat-label>TERMS</mat-label>
+      <input
+        matInput
+        #input
+        (keyup)="onKey($event)"
+        (paste)="onPaste($event)"
+        [(ngModel)]="termsValue"
+        placeholder="Paste or type search terms...">
+    </mat-form-field>
+
+    <div>
+      <div id="search-box-terms-info-box">
+        <div id="search-box-terms-info" *ngIf="terms.size > 0">
+          <div id="search-box-terms-info-left">{{terms.size}} terms</div>
+          <div id="search-box-terms-info-right"></div>
+          <div id="search-box-terms-info-middle" (click)="deleteAllTerms()">
+            CLEAR
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div id="list-box">
+        <mat-list role="list">
+          <mat-list-item role="listitem"
+            *ngFor="let term of terms; let i = index">
+            <span id="delete-term" (click)="deleteTerm(term)">x</span>
+            {{ term }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5p">
+    <button mat-raised-button class="btn-filter">
+      AND
+    </button>
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button class="btn-filter">
+      OR
+    </button>
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button class="btn-filter">
+      AND NOT
+    </button>
+  </div>
+</div>

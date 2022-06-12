@@ -1,0 +1,35 @@
+<div style="flex: 2; margin-top: auto; text-align: right;">
+  <button mat-raised-button styleClass="btn-filter" [ngClass]="{'btn-selected': btnSelected === 1}" (click)="calculateDate(DateRangeSelectionType.LAST_DAY)">Last
+    Day</button>
+
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button styleClass="btn-filter" [ngClass]="{'btn-selected': btnSelected === 2}" (click)="calculateDate(DateRangeSelectionType.LAST_WEEK)">Last
+      Week</button>
+
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button styleClass="btn-filter" [ngClass]="{'btn-selected': btnSelected === 3}" (click)="calculateDate(DateRangeSelectionType.LAST_MONTH)">Last
+      Month</button>
+
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button styleClass="btn-filter" [ngClass]="{'btn-selected': btnSelected === 4}" (click)="calculateDate(DateRangeSelectionType.LAST_3_MONTHS)">Last
+      3 Months</button>
+
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button styleClass="btn-filter" [ngClass]="{'btn-selected': btnSelected === 5}" (click)="calculateDate(DateRangeSelectionType.LAST_6_MONTHS)">Last
+      6 Months</button>
+
+    <span class="div-vertical-separator"></span>
+    <button mat-raised-button styleClass="btn-filter" [ngClass]="{'btn-selected': btnSelected === 6}" (click)="calculateDate(DateRangeSelectionType.LAST_12_MONTHS)">Last
+      12 Months</button>
+
+    <mat-form-field id="dateRangePicker" class="date-filter" appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input id="startDate" matStartDate [(ngModel)]="startDate" (change)="onStartInputChange($event)"
+        placeholder="Start date">
+      <input id="endDate" matEndDate [(ngModel)]="endDate" (dateChange)="onEndDateChange()" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</div>

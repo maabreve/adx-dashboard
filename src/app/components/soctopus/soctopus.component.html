@@ -1,0 +1,41 @@
+<div id="left-content">
+
+</div>
+
+<div id="soctopus-right-content">
+  <div id="tab-container">
+    <mat-tab-group #mainTab color="accent" [(selectedIndex)]="currentTab" (selectedIndexChange)="tabChange($event)">
+      <mat-tab label="NTID" [routerLink]="['/soctopus/ntid']">
+        <div class="tab-inner-container">
+          <app-ntid></app-ntid>
+        </div>
+      </mat-tab>
+      <mat-tab label="Domain">
+        <div class="tab-inner-container">
+          <app-domain></app-domain>
+        </div>
+      </mat-tab>
+      <mat-tab label="IOC">
+        <div class="tab-inner-container">
+          <app-ioc></app-ioc>
+        </div>
+      </mat-tab>
+      <mat-tab label="IP" >
+        <div class="tab-inner-container">
+          <app-ip></app-ip>
+        </div>
+      </mat-tab>
+      <mat-tab label="Host">
+        <div class="tab-inner-container">
+          <app-host></app-host>
+        </div>
+      </mat-tab>
+      <mat-tab label="SNORT">
+        <div class="tab-inner-container">
+          <app-snort></app-snort>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<div class="clearfix"></div>

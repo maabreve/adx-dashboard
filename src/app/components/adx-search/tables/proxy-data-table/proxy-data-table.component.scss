@@ -1,0 +1,132 @@
+:host ::ng-deep table.mat-table {
+  width: 100%;
+}
+
+:host ::ng-deep button {
+  margin-right: .5em;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  padding: 0 15px !important;
+}
+
+th {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+td {
+  font-size: 11px !important;
+}
+
+::ng-deep .mat-paginator{
+  font-size: 1rem;
+}
+
+::ng-deep .mat-menu-panel {
+  max-width: 700px !important;
+  padding: 20px;
+}
+
+#div-filter {
+  width: 96%;
+}
+
+#div-button {
+  width: 2%;
+  position: relative;
+  right: 10px;
+}
+
+#query-command {
+  height: auto;
+  border: 1px solid #cccccc;
+  position: absolute;
+  right: 0px;
+  top: 40px;
+  z-index: 1;
+  background-color: #303030;
+  color: #ffffff;
+  border-radius: 5px;
+  width: 700px !important;
+}
+
+#query-info {
+  max-width: 400px;
+  height: auto;
+}
+
+#table-container {
+  font-size: 8px;
+  width: calc(100vw - 120px) !important;
+}
+
+.p-button.p-button-icon-only {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-header {
+  padding: 8px !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-current {
+  font-size: 0.8rem !important;
+  margin: 0 !important;
+  height: 2rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  font-size: 12px !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-prev {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-next {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-last {
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+}
+
+:host ::ng-deep .p-dropdown-label {
+  font-size: 12px !important;
+  padding: 2px 10px 10px !important;
+}
+
+:host ::ng-deep .p-paginator .p-dropdown {
+  height: 1.5rem !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator-bottom {
+  padding: 5px !important;
+}
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 10px !important;
+  font-size: 12px !important;
+}
+
+:host ::ng-deep .p-inputtext.p-inputtext-sm {
+  font-size: 0.775rem;
+  padding: 0.375rem 2.575rem;
+  margin-right: 10px;
+}

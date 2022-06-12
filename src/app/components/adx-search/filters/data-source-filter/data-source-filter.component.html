@@ -1,0 +1,64 @@
+    <div>
+      <section>
+        <ul id="tag-list">
+          <li *ngFor="let tag of tags">
+            <mat-checkbox
+              class="example-margin"
+              color="primary"
+              (change)="setDataSourceItems(tag.id, $event.checked)"
+              [(ngModel)]="tag.selected">
+              {{tag.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <ul>
+          <li *ngFor="let ds of dataSourceView">
+            <span id="data-source-span" class="cursor-pointer" (click)="toggleDataSource(ds.id)">
+              <mat-icon
+                *ngIf="!ds.showItems"
+                aria-hidden="false"
+                color="primary"
+                class="img-valign"
+                aria-label="">expand_more</mat-icon>
+
+              <mat-icon
+                *ngIf="ds.showItems"
+                aria-hidden="false"
+                class="img-valign"
+                aria-label="">expand_less</mat-icon>
+
+              {{ds.name}}
+
+            </span>
+            <ul id="sub-list" *ngIf="ds.showItems">
+              <li *ngFor="let dsItem of ds.items">
+                <mat-checkbox
+                  class="example-margin"
+                  color="primary"
+                  id={{dsItem.id}}
+                  [ngModel]="dsItem.selected"
+                  *ngIf="dsItem.enabled"
+                  (ngModelChange)="dataSourceItemClick($event, dsItem)">
+                    {{dsItem.title}}
+                    <mat-icon
+                      *ngIf="dsItem.fullSearch === '=='"
+                      aria-hidden="false"
+                      pTooltip="equal"
+                      class="img-valign exactSearchIcon"
+                      aria-label="">gps_fixed</mat-icon>
+
+                      <mat-icon *ngIf="dsItem.fullSearch === 'endswith'"
+                                aria-hidden="false"
+                                pTooltip="endswith"
+                                class="img-valign exactSearchIcon"
+                                aria-label="">
+                        gps_not_fixed</mat-icon>
+                </mat-checkbox>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </div>

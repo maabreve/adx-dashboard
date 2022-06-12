@@ -1,0 +1,111 @@
+#user-info-title {
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin-bottom: 0px;
+  height: 3em;
+  display: flex;
+}
+
+#user-info-title a {
+  position: relative !important;
+  right: 0.75em !important;
+  color: #121212;
+  background: #9FA8DA !important;
+  border-radius: 0.5em !important;
+  width: 4.5em;
+  height: 2em;
+  text-align: center;
+  margin-top: .5em;
+  padding-left:0px;
+  cursor: pointer;
+}
+
+#user-info-title h3 {
+  max-width: max-content;
+  margin: auto;
+  margin-bottom: 0.2em;
+}
+
+#user-info-title a {
+  margin-bottom: 0px;
+}
+
+.container {
+  margin: 1em 0;
+  border: 1px;
+  border-color: rgba(255,255,255,0.8);
+  background-color: rgb(66, 66, 66);
+  min-height: 100px;
+}
+
+#user-info-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#image-container {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  flex: 1;
+  display: flex;
+}
+
+#image-container > .img {
+  border: 0px;
+  height: 8em;
+  width: 8em;
+  border-radius: 5em;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.info-section {
+  padding: 0px 5px;
+  flex: 2;
+  font-size: 12px;
+}
+
+.info-section > span {
+  display: flex;
+}
+
+.info-section p {
+  margin-left: 3px;
+  margin-bottom: 0px;
+}
+
+.info-section label {
+  font-weight: bold;
+}
+
+#address-span {
+  display: grid;
+  margin-bottom: 5px;
+}
+
+#address-span p {
+  line-height: normal;
+  margin-left: 3px;
+  margin-bottom: 0px;
+}
+
+a {
+  padding-left: 5px;
+  color: gray;
+}
+
+.placeholder-prompt {
+  text-align: center;
+  margin-top: 1.45em;
+  font-size: medium;
+}
+
+.spinner-padding {
+  margin-top: 0.5em;
+}
+
+.mat-spinner, #mat-spinner {
+  margin: auto;
+}

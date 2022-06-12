@@ -1,0 +1,69 @@
+
+  <div class="center zindex-front" *ngIf="isLoading">
+    <mat-spinner color=primary></mat-spinner>
+  </div>
+
+<div class="table-header">
+  <div class="flex-column-0">
+    <span> No Matches <p-inputSwitch [(ngModel)]="switchMatch" (onChange)="switchNoMatchesChanged($event)" class="switch-button"></p-inputSwitch> Show Matches only</span>
+  </div>
+  <div class="flex-column-1 table-title">
+    <h3>ThreatConnect IOCs</h3>
+  </div>
+  <div class="table-item flex-column-0">Matches remaining</div>
+  <div class="table-item flex-column-0">
+    <span> Action Taken &nbsp; false <p-inputSwitch [(ngModel)]="switchAction" (onChange)="switchActionChanged($event)" class="switch-button"></p-inputSwitch> true</span>
+  </div>
+  <div class="flex-column-0">
+    <p-button [label]="actionButtonLabel" styleClass="p-button-sm" [disabled]="!currentRow" (onClick)="takeRemoveActionClick()"></p-button>
+  </div>
+</div>
+<div id="table-content">
+  <p-table
+    #dt
+    styleClass="p-datatable-gridlines"
+    [value]="rows"
+    [columns]="columns"
+    selectionMode="single"
+    [(selection)]="selectedRow"
+    dataKey="ID"
+    (onRowSelect)="onRowSelect($event)"
+    (onRowUnselect)="onRowUnselect($event)"
+    [resizableColumns]="true"
+    columnResizeMode="expand"
+    [paginator]="true"
+    [rows]="25"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [scrollable]="true"
+    scrollHeight="350px"
+    sortMode="multiple"
+    [ngClass]="{'p-data-table-short': true}"
+    [rowsPerPageOptions]="[25,50,100,150]"
+    [multiSortMeta]="[{field: 'Arcsight RT', order: -1}]">
+
+    <ng-template pTemplate="colgroup">
+      <colgroup>
+        <col *ngFor="let col of columns">
+      </colgroup>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pResizableColumn *ngFor="let col of columns" [pSortableColumn]="col['field']">
+          <p-sortIcon [field]="col['field']"></p-sortIcon>
+          {{col['header']}}
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-item>
+      <tr [pSelectableRow]="item">
+        <td *ngFor="let col of columns">
+          <p *ngIf="col['field'] !== 'TC Link'" pTooltip={{item[col.field]}} class="m-0p p-0p">{{item[col['field']]}}</p>
+          <a *ngIf="col['field'] === 'TC Link'" pTooltip={{item[col.field]}} class="m-0p p-0p" [href]="item[col['field']]" target="_blank">TC Link</a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,69 @@
+#filter-container {
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.87);
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+#timePresetButtons{
+  text-align: right;
+  margin:auto;
+}
+
+:host ::ng-deep .p-inputtext {
+  height: 35px;
+  font-size: 12px;
+  width: 220px
+}
+
+.tabTitle {
+  display: block;
+}
+
+.date-filter {
+  font-size: 12px;
+  width: 20em !important;
+  background-color: #1e1e1e;
+  // border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.87);
+  // border-radius: 4px;
+  height: 35px;
+  margin-top: 0.3em;
+  margin-left: 0.5em;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+//  padding: .3em .25em 0 0.75em;
+  background: inherit;
+  height: 100%;
+}
+
+#dateRangePicker {
+  vertical-align: bottom;
+}
+
+::ng-deep #dateRangePicker .mat-form-field-flex  {
+  padding-top: 0;
+  height: 35px;
+}
+
+::ng-deep #dateRangePicker .mat-focus-indicator {
+  padding-top: 0.6em;
+}
+
+button {
+  font-size: 0.99em;
+  font-family: "Univers", Arial, Helvetica, sans-serif;
+}
+
+::ng-deep .darkMode .mat-raised-button {
+  background-color: #393939;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+::ng-deep .mat-autocomplete-trigger {
+  width: 300px;
+}
